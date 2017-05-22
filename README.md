@@ -1,4 +1,5 @@
-![Build Status](https://travis-ci.org/nickscha/geom.svg?branch=master) 
+![Build Status](https://travis-ci.org/nickscha/geom.svg?branch=master)
+![codecov.io](https://codecov.io/github/nickscha/geom/coverage.svg?branch=master)
 ![Size](https://reposs.herokuapp.com/?path=nickscha/geom)
 
 # geom - in development
