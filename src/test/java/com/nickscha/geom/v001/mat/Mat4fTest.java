@@ -46,6 +46,30 @@ public class Mat4fTest {
 	}
 	
 	@Test
+	public void testMat4fPerspective() {
+		Mat4f mat4f = new Mat4f().initPerspective(90, 1, 5, 100);
+	}
+	
+	
+	@Test
+	public void testMat4fFrustum() {
+		Mat4f mat4f = new Mat4f().initOrthographic(1, 1, 1, 1, 5, 100);
+		new Mat4f().frustum(1, 1, 1, 1, 5, 100);
+		new Mat4f().frustumNonPost(1, 1, 1, 1, 5, 100);
+		new Mat4f().frustumRayDir(1, 2);
+	}
+	
+	@Test
+	public void testMat4fDeterminant() {
+		float result = new Mat4f().determinant();
+	}
+	
+	@Test
+	public void testMat4fDeterminant3x3() {
+		float result = new Mat4f().determinant3x3();
+	}
+	
+	@Test
 	public void testEquals(){
 		Assert.assertTrue(new Mat4f().initIdentity().equals(new Mat4f().initIdentity()));
 	}
