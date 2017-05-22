@@ -1,0 +1,60 @@
+package com.nickscha.geom.v001.mat;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.nickscha.geom.mat.Mat4f;
+
+public class Mat4fTest {
+
+	@Test
+	public void testMat4fIdentity() {
+		Mat4f mat4f = new Mat4f().initIdentity();
+
+		Assert.assertTrue(mat4f.get(0, 0) == 1f);
+		Assert.assertTrue(mat4f.get(1, 1) == 1f);
+		Assert.assertTrue(mat4f.get(2, 2) == 1f);
+		Assert.assertTrue(mat4f.get(3, 3) == 1f);
+	}
+	
+	@Test
+	public void testMat4fTranslation() {
+		Mat4f mat4f = new Mat4f().initTranslation(2, 2, 2);
+
+		Assert.assertTrue(mat4f.get(0, 0) == 1f);
+		Assert.assertTrue(mat4f.get(0, 3) == 2f);
+		Assert.assertTrue(mat4f.get(1, 1) == 1f);
+		Assert.assertTrue(mat4f.get(1, 3) == 2f);
+		Assert.assertTrue(mat4f.get(2, 2) == 1f);
+		Assert.assertTrue(mat4f.get(2, 3) == 2f);
+		Assert.assertTrue(mat4f.get(3, 3) == 1f);
+	}
+	
+	@Test
+	public void testMat4fScale() {
+		Mat4f mat4f = new Mat4f().initScale(2, 2, 2);
+
+		Assert.assertTrue(mat4f.get(0, 0) == 2f);
+		Assert.assertTrue(mat4f.get(1, 1) == 2f);
+		Assert.assertTrue(mat4f.get(2, 2) == 2f);
+		Assert.assertTrue(mat4f.get(3, 3) == 1f);
+	}
+	
+	@Test
+	public void testMat4fRotation() {
+		Mat4f mat4f = new Mat4f().initRotation(2, 2, 2);
+	}
+	
+	@Test
+	public void testEquals(){
+		Assert.assertTrue(new Mat4f().initIdentity().equals(new Mat4f().initIdentity()));
+	}
+	
+	@Test
+	public void testToString(){
+		String result = new Mat4f().initIdentity().toString();
+		
+		Assert.assertEquals("mat4f[(1.0/0.0/0.0/0.0),(0.0/1.0/0.0/0.0),(0.0/0.0/1.0/0.0),(0.0/0.0/0.0/1.0)]", result);
+	}
+
+}

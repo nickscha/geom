@@ -19,5 +19,5 @@ public final class Mat {
 
 	private Mat() {
 	}
-
+	
 }
