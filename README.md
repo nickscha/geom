@@ -5,7 +5,7 @@
 # geom - in development
 A lightweight but powerful geometry libary with productive readiness API and fluent usages.
 
-# Supported Types
+## Supported Types
 
 Class names are aligned with GLSL names.
 
@@ -17,11 +17,11 @@ Class names are aligned with GLSL names.
 
 
 
-# Example
+## Example
 
 For more examples have a look at the src/test/resources/demo directory.
 
-## Calculating Normals based on two vectors
+### Calculating Normals based on two vectors
 In this demo we will calculate the normal vector based on two supplied vectors.
 ```java
 Vec3f one = Vec3f.of(1, 1, 1);
