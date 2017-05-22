@@ -92,9 +92,13 @@ public final class Quatf {
     public static Quatf of(float x, float y, float z, float w) {
         return new Quatf(x, y, z, w);
     }
+    
+    public static Quatf of(Vec3f axis, float angle) {
+    	return new Quatf(axis, angle);
+    }
 
     public float lengthSquared() {
-        return x * x + y * y + z * z + w + w;
+        return x * x + y * y + z * z + w * w;
     }
 
     public float length() {
@@ -215,7 +219,7 @@ public final class Quatf {
     }
 
     public Quatf mul(float r) {
-        return new Quatf(x * r, y * r, z * r, w * r);
+        return mul(Quatf.of(r));
     }
 
     public Quatf mul(Quatf r) {
