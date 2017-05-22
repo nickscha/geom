@@ -4,6 +4,17 @@
 # geom - in development
 A lightweight but powerful geometry libary with productive readiness API and fluent usages.
 
+# Supported Types
+
+Class names are aligned with GLSL names.
+
+| Type          | Delegate | Components                 |
+| ------------- | :------- | -------------------------: |
+| Vectors       | Vec      | Vec1f, Vec2f, Vec3f, Vec4f |
+| Matrices      | Mat      |               Mat3f, Mat4f |
+| Quaternions   | Quat     |                      Quatf |
+
+
 
 # Example
 
