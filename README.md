@@ -42,7 +42,7 @@ Vec3f normalized = one.cross(two).normalize(); // Result is 0,0,0
 ## Motivation
 
 There are other geom libaries already available but they have either
-* a small set of supported types which leads that you'll end up making your own types
+* a small set of supported types
 * inconsistent structures (In some you'll find immutable methods next to mutable ones with the same function. Now that ain't pretty and helpful)
 
 That why I've created this project with the aim of tackling both issues by having a comprehensive set of functions with a nice consistent api.
