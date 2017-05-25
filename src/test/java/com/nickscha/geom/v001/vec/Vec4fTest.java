@@ -12,13 +12,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+*/
 package com.nickscha.geom.v001.vec;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.nickscha.geom.mat.Mat4f;
+import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec;
 import com.nickscha.geom.vec.Vec2f;
 import com.nickscha.geom.vec.Vec3f;
@@ -28,7 +29,6 @@ import com.nickscha.geom.vec.Vec4f;
  * @author nickscha
  * @since 0.0.1
  * @version 0.0.1
- *
  */
 public class Vec4fTest {
 
@@ -392,30 +392,542 @@ public class Vec4fTest {
 		Assert.assertEquals(Vec4f.of(1.5f, 1.5f, 1.5f, 1.5f), start.lerp(end, 0.75f));
 		Assert.assertEquals(Vec4f.of(2.0f, 2.0f, 2.0f, 2.0f), start.lerp(end, 1.00f));
 	}
-	
+
 	@Test
-	public void testScreenSpace(){
+	public void testScreenSpace() {
 		Mat4f viewMatrix = new Mat4f();
 		Mat4f projectionMatrix = new Mat4f();
-		
+
 		Vec4f anObjectInScene = Vec4f.of(5, 3, -5, 1f);
 		Vec2f screenSpace = anObjectInScene.screenSpace(viewMatrix, projectionMatrix);
 	}
-	
+
 	@Test
-	public void testVec2(){
-		Vec4f one = Vec4f.of(1,2,3, 0);
+	public void testVec2() {
+		Vec4f one = Vec4f.of(1, 2, 3, 0);
 		Vec2f result = one.vec2();
-		
+
 		Assert.assertEquals(Vec2f.of(1, 2), result);
 	}
-	
+
 	@Test
-	public void testVec3(){
-		Vec4f one = Vec4f.of(1,2,3, 0);
-		
+	public void testVec3() {
+		Vec4f one = Vec4f.of(1, 2, 3, 0);
+
 		Vec3f result = one.vec3();
 		Assert.assertEquals(Vec3f.of(1, 2, 3), result);
+	}
+
+	@Test
+	public void testxxx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xxx();
+
+		Assert.assertEquals(Vec3f.of(1, 1, 1), result);
+	}
+
+	@Test
+	public void testxxy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xxy();
+
+		Assert.assertEquals(Vec3f.of(1, 1, 2), result);
+	}
+
+	@Test
+	public void testxxz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xxz();
+
+		Assert.assertEquals(Vec3f.of(1, 1, 3), result);
+	}
+
+	@Test
+	public void testxxw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xxw();
+
+		Assert.assertEquals(Vec3f.of(1, 1, 4), result);
+	}
+
+	@Test
+	public void testxyx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xyx();
+
+		Assert.assertEquals(Vec3f.of(1, 2, 1), result);
+	}
+
+	@Test
+	public void testxyy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xyy();
+
+		Assert.assertEquals(Vec3f.of(1, 2, 2), result);
+	}
+
+	@Test
+	public void testxyz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xyz();
+
+		Assert.assertEquals(Vec3f.of(1, 2, 3), result);
+	}
+
+	@Test
+	public void testxyw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xyw();
+
+		Assert.assertEquals(Vec3f.of(1, 2, 4), result);
+	}
+
+	@Test
+	public void testxzx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xzx();
+
+		Assert.assertEquals(Vec3f.of(1, 3, 1), result);
+	}
+
+	@Test
+	public void testxzy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xzy();
+
+		Assert.assertEquals(Vec3f.of(1, 3, 2), result);
+	}
+
+	@Test
+	public void testxzz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xzz();
+
+		Assert.assertEquals(Vec3f.of(1, 3, 3), result);
+	}
+
+	@Test
+	public void testxzw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xzw();
+
+		Assert.assertEquals(Vec3f.of(1, 3, 4), result);
+	}
+
+	@Test
+	public void testxwx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xwx();
+
+		Assert.assertEquals(Vec3f.of(1, 4, 1), result);
+	}
+
+	@Test
+	public void testxwy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xwy();
+
+		Assert.assertEquals(Vec3f.of(1, 4, 2), result);
+	}
+
+	@Test
+	public void testxwz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xwz();
+
+		Assert.assertEquals(Vec3f.of(1, 4, 3), result);
+	}
+
+	@Test
+	public void testxww() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.xww();
+
+		Assert.assertEquals(Vec3f.of(1, 4, 4), result);
+	}
+
+	@Test
+	public void testyxx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yxx();
+
+		Assert.assertEquals(Vec3f.of(2, 1, 1), result);
+	}
+
+	@Test
+	public void testyxy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yxy();
+
+		Assert.assertEquals(Vec3f.of(2, 1, 2), result);
+	}
+
+	@Test
+	public void testyxz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yxz();
+
+		Assert.assertEquals(Vec3f.of(2, 1, 3), result);
+	}
+
+	@Test
+	public void testyxw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yxw();
+
+		Assert.assertEquals(Vec3f.of(2, 1, 4), result);
+	}
+
+	@Test
+	public void testyyx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yyx();
+
+		Assert.assertEquals(Vec3f.of(2, 2, 1), result);
+	}
+
+	@Test
+	public void testyyy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yyy();
+
+		Assert.assertEquals(Vec3f.of(2, 2, 2), result);
+	}
+
+	@Test
+	public void testyyz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yyz();
+
+		Assert.assertEquals(Vec3f.of(2, 2, 3), result);
+	}
+
+	@Test
+	public void testyyw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yyw();
+
+		Assert.assertEquals(Vec3f.of(2, 2, 4), result);
+	}
+
+	@Test
+	public void testyzx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yzx();
+
+		Assert.assertEquals(Vec3f.of(2, 3, 1), result);
+	}
+
+	@Test
+	public void testyzy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yzy();
+
+		Assert.assertEquals(Vec3f.of(2, 3, 2), result);
+	}
+
+	@Test
+	public void testyzz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yzz();
+
+		Assert.assertEquals(Vec3f.of(2, 3, 3), result);
+	}
+
+	@Test
+	public void testyzw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yzw();
+
+		Assert.assertEquals(Vec3f.of(2, 3, 4), result);
+	}
+
+	@Test
+	public void testywx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.ywx();
+
+		Assert.assertEquals(Vec3f.of(2, 4, 1), result);
+	}
+
+	@Test
+	public void testywy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.ywy();
+
+		Assert.assertEquals(Vec3f.of(2, 4, 2), result);
+	}
+
+	@Test
+	public void testywz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.ywz();
+
+		Assert.assertEquals(Vec3f.of(2, 4, 3), result);
+	}
+
+	@Test
+	public void testyww() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.yww();
+
+		Assert.assertEquals(Vec3f.of(2, 4, 4), result);
+	}
+
+	@Test
+	public void testzxx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zxx();
+
+		Assert.assertEquals(Vec3f.of(3, 1, 1), result);
+	}
+
+	@Test
+	public void testzxy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zxy();
+
+		Assert.assertEquals(Vec3f.of(3, 1, 2), result);
+	}
+
+	@Test
+	public void testzxz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zxz();
+
+		Assert.assertEquals(Vec3f.of(3, 1, 3), result);
+	}
+
+	@Test
+	public void testzxw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zxw();
+
+		Assert.assertEquals(Vec3f.of(3, 1, 4), result);
+	}
+
+	@Test
+	public void testzyx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zyx();
+
+		Assert.assertEquals(Vec3f.of(3, 2, 1), result);
+	}
+
+	@Test
+	public void testzyy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zyy();
+
+		Assert.assertEquals(Vec3f.of(3, 2, 2), result);
+	}
+
+	@Test
+	public void testzyz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zyz();
+
+		Assert.assertEquals(Vec3f.of(3, 2, 3), result);
+	}
+
+	@Test
+	public void testzyw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zyw();
+
+		Assert.assertEquals(Vec3f.of(3, 2, 4), result);
+	}
+
+	@Test
+	public void testzzx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zzx();
+
+		Assert.assertEquals(Vec3f.of(3, 3, 1), result);
+	}
+
+	@Test
+	public void testzzy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zzy();
+
+		Assert.assertEquals(Vec3f.of(3, 3, 2), result);
+	}
+
+	@Test
+	public void testzzz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zzz();
+
+		Assert.assertEquals(Vec3f.of(3, 3, 3), result);
+	}
+
+	@Test
+	public void testzzw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zzw();
+
+		Assert.assertEquals(Vec3f.of(3, 3, 4), result);
+	}
+
+	@Test
+	public void testzwx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zwx();
+
+		Assert.assertEquals(Vec3f.of(3, 4, 1), result);
+	}
+
+	@Test
+	public void testzwy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zwy();
+
+		Assert.assertEquals(Vec3f.of(3, 4, 2), result);
+	}
+
+	@Test
+	public void testzwz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zwz();
+
+		Assert.assertEquals(Vec3f.of(3, 4, 3), result);
+	}
+
+	@Test
+	public void testzww() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.zww();
+
+		Assert.assertEquals(Vec3f.of(3, 4, 4), result);
+	}
+
+	@Test
+	public void testwxx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wxx();
+
+		Assert.assertEquals(Vec3f.of(4, 1, 1), result);
+	}
+
+	@Test
+	public void testwxy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wxy();
+
+		Assert.assertEquals(Vec3f.of(4, 1, 2), result);
+	}
+
+	@Test
+	public void testwxz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wxz();
+
+		Assert.assertEquals(Vec3f.of(4, 1, 3), result);
+	}
+
+	@Test
+	public void testwxw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wxw();
+
+		Assert.assertEquals(Vec3f.of(4, 1, 4), result);
+	}
+
+	@Test
+	public void testwyx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wyx();
+
+		Assert.assertEquals(Vec3f.of(4, 2, 1), result);
+	}
+
+	@Test
+	public void testwyy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wyy();
+
+		Assert.assertEquals(Vec3f.of(4, 2, 2), result);
+	}
+
+	@Test
+	public void testwyz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wyz();
+
+		Assert.assertEquals(Vec3f.of(4, 2, 3), result);
+	}
+
+	@Test
+	public void testwyw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wyw();
+
+		Assert.assertEquals(Vec3f.of(4, 2, 4), result);
+	}
+
+	@Test
+	public void testwzx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wzx();
+
+		Assert.assertEquals(Vec3f.of(4, 3, 1), result);
+	}
+
+	@Test
+	public void testwzy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wzy();
+
+		Assert.assertEquals(Vec3f.of(4, 3, 2), result);
+	}
+
+	@Test
+	public void testwzz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wzz();
+
+		Assert.assertEquals(Vec3f.of(4, 3, 3), result);
+	}
+
+	@Test
+	public void testwzw() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wzw();
+
+		Assert.assertEquals(Vec3f.of(4, 3, 4), result);
+	}
+
+	@Test
+	public void testwwx() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wwx();
+
+		Assert.assertEquals(Vec3f.of(4, 4, 1), result);
+	}
+
+	@Test
+	public void testwwy() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wwy();
+
+		Assert.assertEquals(Vec3f.of(4, 4, 2), result);
+	}
+
+	@Test
+	public void testwwz() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.wwz();
+
+		Assert.assertEquals(Vec3f.of(4, 4, 3), result);
+	}
+
+	@Test
+	public void testwww() {
+		Vec4f one = Vec4f.of(1, 2, 3, 4);
+		Vec3f result = one.www();
+
+		Assert.assertEquals(Vec3f.of(4, 4, 4), result);
 	}
 
 	@Test
