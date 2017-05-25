@@ -159,6 +159,21 @@ public final class Mat4f {
 
         return this;
     }
+      
+    public Mat4f modelMatrix(Vec3f position, float scale){
+    	Mat4f modelMatrix = new Mat4f();
+    	modelMatrix.initTranslation(position.getX(), position.getY(), position.getZ());
+    	modelMatrix.scale(Vec3f.of(scale));
+    	return modelMatrix;
+    }
+    
+    public Mat4f viewMatrix(){
+    	return null;
+    }
+    
+    public Mat4f projectionMatrix(float fov, float aspectRatio, float zNear, float zFar) {
+    	return initPerspective(fov, aspectRatio, zNear, zFar);
+    }
 
     public Mat4f initPerspective(float fov, float aspectRatio, float zNear, float zFar) {
         float tanHalfFOV = (float) Math.tan(fov / 2);
@@ -476,6 +491,23 @@ public final class Mat4f {
 
         return res;
     }
+    
+	public Mat4f scale(Vec3f vec) {
+		m[0][0] = m[0][0] * vec.getX();
+		m[0][1] = m[0][1] * vec.getX();
+		m[0][2] = m[0][2] * vec.getX();
+		m[0][3] = m[0][3] * vec.getX();
+		m[1][0] = m[1][0] * vec.getY();
+		m[1][1] = m[1][1] * vec.getY();
+		m[1][2] = m[1][2] * vec.getY();
+		m[1][3] = m[1][3] * vec.getY();
+		m[2][0] = m[2][0] * vec.getZ();
+		m[2][1] = m[2][1] * vec.getZ();
+		m[2][2] = m[2][2] * vec.getZ();
+		m[2][3] = m[2][3] * vec.getZ();
+		return this;
+	}
+    
 
     public Mat4f div(Mat4f r) {
         Mat4f res = new Mat4f();
