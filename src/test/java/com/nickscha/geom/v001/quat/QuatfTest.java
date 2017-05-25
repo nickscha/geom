@@ -21,7 +21,6 @@ import org.junit.Test;
 import com.nickscha.geom.quat.Quat;
 import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec3f;
-import com.nickscha.geom.vec.Vec4f;
 
 /**
  * @author nickscha
