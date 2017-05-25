@@ -81,7 +81,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initTranslation(float x, float y, float z) {
+	public static Mat4f initTranslationMatrix(float x, float y, float z) {
 		final float[][] m = new float[GROUPS][FIELDS];
 
 		m[0][0] = 1;
@@ -95,7 +95,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initRotation(float x, float y, float z) {
+	public static Mat4f initRotationMatrix(float x, float y, float z) {
 		Mat4f rx = new Mat4f();
 		Mat4f ry = new Mat4f();
 		Mat4f rz = new Mat4f();
@@ -151,25 +151,44 @@ public final class Mat4f {
 	}
 
 	public static Mat4f initModelMatrix(Vec3f position, float scale) {
-		Mat4f modelMatrix = Mat4f.initTranslation(position.getX(), position.getY(), position.getZ());
+		Mat4f modelMatrix = Mat4f.initTranslationMatrix(position.getX(), position.getY(), position.getZ());
 		modelMatrix.scale(Vec3f.of(scale));
 		return modelMatrix;
 	}
 
 	public static Mat4f initViewMatrix(Vec3f position, Mat4f rotationMatrix) {
-		Mat4f translation = Mat4f.initTranslation(position.getX(), position.getY(), position.getZ());
+		Mat4f translation = Mat4f.initTranslationMatrix(position.getX(), position.getY(), position.getZ());
 		return rotationMatrix.mul(translation);
 	}
 
+	/**
+	 * 
+	 * @param fov the field of view
+	 * @param aspectRatio the aspect ratio (for example: screen.width/screen.height)
+	 * @param zNear first distance to consider (clip object to near)
+	 * @param zFar last distance to ignore (clip object to far)
+	 * @return the projection (perspective) matrix for supplied parameters
+	 * @see #initPerspective(float, float, float, float)
+	 */
 	public static Mat4f initProjectionMatrix(float fov, float aspectRatio, float zNear, float zFar) {
-		return initPerspective(fov, aspectRatio, zNear, zFar);
+		return initPerspectiveMatrix(fov, aspectRatio, zNear, zFar);
 	}
 
 	public static Mat4f initMvpMatrix(Mat4f modelMatrix, Mat4f viewMatrix, Mat4f projectionMatrix) {
 		return projectionMatrix.mul(viewMatrix).mul(modelMatrix);
 	}
 
-	public static Mat4f initPerspective(float fov, float aspectRatio, float zNear, float zFar) {
+	/**
+	 * 
+	 * 
+	 * @param fov the field of view
+	 * @param aspectRatio the aspect ratio (for example: screen.width/screen.height)
+	 * @param zNear first distance to consider (clip object to near)
+	 * @param zFar last distance to ignore (clip object to far)
+	 * @return the perspective (projection) matrix for supplied parameters
+	 * @see #initProjectionMatrix(float, float, float, float)
+	 */
+	public static Mat4f initPerspectiveMatrix(float fov, float aspectRatio, float zNear, float zFar) {
 		float tanHalfFOV = (float) Math.tan(fov / 2);
 		float zRange = zNear - zFar;
 
@@ -183,7 +202,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initOrthographic(float left, float right, float bottom, float top, float near, float far) {
+	public static Mat4f initOrthographicMatrix(float left, float right, float bottom, float top, float near, float far) {
 		float width = right - left;
 		float height = top - bottom;
 		float depth = far - near;

@@ -40,7 +40,7 @@ public class Mat4fTest {
 
 	@Test
 	public void testMat4fTranslation() {
-		Mat4f mat4f = Mat4f.initTranslation(2, 2, 2);
+		Mat4f mat4f = Mat4f.initTranslationMatrix(2, 2, 2);
 
 		Assert.assertTrue(mat4f.get(0, 0) == 1f);
 		Assert.assertTrue(mat4f.get(0, 3) == 2f);
@@ -63,17 +63,17 @@ public class Mat4fTest {
 
 	@Test
 	public void testMat4fRotation() {
-		Mat4f mat4f = Mat4f.initRotation(2, 2, 2);
+		Mat4f mat4f = Mat4f.initRotationMatrix(2, 2, 2);
 	}
 
 	@Test
 	public void testMat4fPerspective() {
-		Mat4f mat4f = Mat4f.initPerspective(90, 1, 5, 100);
+		Mat4f mat4f = Mat4f.initPerspectiveMatrix(90, 1, 5, 100);
 	}
 
 	@Test
 	public void testMat4fFrustum() {
-		Mat4f mat4f = Mat4f.initOrthographic(1, 1, 1, 1, 5, 100);
+		Mat4f mat4f = Mat4f.initOrthographicMatrix(1, 1, 1, 1, 5, 100);
 		new Mat4f().frustum(1, 1, 1, 1, 5, 100);
 		new Mat4f().frustumNonPost(1, 1, 1, 1, 5, 100);
 		new Mat4f().frustumRayDir(1, 2);

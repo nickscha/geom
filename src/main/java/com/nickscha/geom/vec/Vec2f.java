@@ -788,7 +788,7 @@ public final class Vec2f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Translation() {
-		return new Mat4f().initTranslation(x, y, 0);
+		return Mat4f.initTranslationMatrix(x, y, 0);
 	}
 
 	/**
@@ -798,7 +798,7 @@ public final class Vec2f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Scale() {
-		return new Mat4f().initScale(x, y, 0);
+		return Mat4f.initScale(x, y, 0);
 	}
 
 	/**
@@ -808,7 +808,7 @@ public final class Vec2f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Rotation() {
-		return new Mat4f().initRotation(x, y, 0);
+		return Mat4f.initRotationMatrix(x, y, 0);
 	}
 
 	/**

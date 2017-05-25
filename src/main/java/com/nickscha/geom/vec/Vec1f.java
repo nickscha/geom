@@ -703,7 +703,7 @@ public final class Vec1f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Translation() {
-		return new Mat4f().initTranslation(x, 0.0f, 0);
+		return Mat4f.initTranslationMatrix(x, 0.0f, 0);
 	}
 
 	/**
@@ -713,7 +713,7 @@ public final class Vec1f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Scale() {
-		return new Mat4f().initScale(x, 0.0f, 0);
+		return Mat4f.initScale(x, 0.0f, 0);
 	}
 
 	/**
@@ -723,7 +723,7 @@ public final class Vec1f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Rotation() {
-		return new Mat4f().initRotation(x, 0.0f, 0);
+		return Mat4f.initRotationMatrix(x, 0.0f, 0);
 	}
 
 	/**
