@@ -3,7 +3,7 @@
 ![Size](https://reposs.herokuapp.com/?path=nickscha/geom)
 ![License](https://img.shields.io/hexpm/l/plug.svg)
 
-# geom - in development
+# geom - in development (~30kb jar)
 A lightweight but powerful geometry libary with productive readiness API and fluent usages.
 
 ## What is in for you ?
