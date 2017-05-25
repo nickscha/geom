@@ -18,7 +18,10 @@ package com.nickscha.geom.v001.vec;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.nickscha.geom.mat.Mat4f;
 import com.nickscha.geom.vec.Vec;
+import com.nickscha.geom.vec.Vec2f;
+import com.nickscha.geom.vec.Vec3f;
 import com.nickscha.geom.vec.Vec4f;
 
 public class Vec4fTest {
@@ -380,6 +383,15 @@ public class Vec4fTest {
 		Assert.assertEquals(Vec4f.of(1.0f, 1.0f, 1.0f, 1.0f), start.lerp(end, 0.50f));
 		Assert.assertEquals(Vec4f.of(1.5f, 1.5f, 1.5f, 1.5f), start.lerp(end, 0.75f));
 		Assert.assertEquals(Vec4f.of(2.0f, 2.0f, 2.0f, 2.0f), start.lerp(end, 1.00f));
+	}
+	
+	@Test
+	public void testScreenSpace(){
+		Mat4f viewMatrix = new Mat4f();
+		Mat4f projectionMatrix = new Mat4f();
+		
+		Vec4f anObjectInScene = Vec4f.of(5, 3, -5, 1f);
+		Vec2f screenSpace = anObjectInScene.screenSpace(viewMatrix, projectionMatrix);
 	}
 
 	@Test
