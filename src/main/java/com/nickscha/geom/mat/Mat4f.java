@@ -62,8 +62,21 @@ public final class Mat4f {
 		this.m = new float[GROUPS][FIELDS];
 	}
 
+	public Mat4f(float amt) {
+		this();
+		for (int i = 0; i < GROUPS; i++) {
+			for (int j = 0; j < FIELDS; j++) {
+				this.m[i][j] = amt;
+			}
+		}
+	}
+
 	public Mat4f(float[][] m) {
 		this.m = m;
+	}
+
+	public static Mat4f of(float amt) {
+		return new Mat4f(amt);
 	}
 
 	public static Mat4f of(float[][] m) {
@@ -252,28 +265,28 @@ public final class Mat4f {
 
 		return new Mat4f(m);
 	}
-	
 
-	public static Mat4f lookAt(Vec3f eye, Vec3f center, Vec3f up) {
-		Vec3f f = center.sub(eye).normalize();
+	public static Mat4f initLookAtMatrix(Vec3f eye, Vec3f target, Vec3f up) {
+		Vec3f f = target.sub(eye).normalize();
 		Vec3f s = f.cross(up).normalize();
 		Vec3f u = s.cross(f);
 
-		final float[][] m = new float[GROUPS][FIELDS];
-		m[0][0] = s.getX();
-		m[0][1] = s.getY();
-		m[0][2] = s.getZ();
-		m[1][0] = u.getX();
-		m[1][1] = u.getY();
-		m[1][2] = u.getZ();
-		m[2][0] = -f.getX();
-		m[2][1] = -f.getY();
-		m[2][2] = -f.getZ();
-		m[0][3] = -s.dot(eye);
-		m[1][3] = -u.dot(eye);
-		m[2][3] = f.dot(eye);
-
-		return new Mat4f(m);
+		Mat4f res = new Mat4f();
+		res.m[0][0] = s.getX();
+		res.m[0][1] = s.getY();
+		res.m[0][2] = s.getZ();
+		res.m[1][0] = u.getX();
+		res.m[1][1] = u.getY();
+		res.m[1][2] = u.getZ();
+		res.m[2][0] = -f.getX();
+		res.m[2][1] = -f.getY();
+		res.m[2][2] = -f.getZ();
+		res.m[0][3] = -s.dot(eye);
+		res.m[1][3] = -u.dot(eye);
+		res.m[2][3] = f.dot(eye);
+		res.m[3][3] = 1.0f;
+	
+		return res;
 	}
 
 	/**
