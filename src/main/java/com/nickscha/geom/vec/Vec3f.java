@@ -592,7 +592,7 @@ public final class Vec3f {
 	 * by their length. This is necessary for example when we want to find out
 	 * if another object, or point is in front of or behind our reference frame,
 	 * or when we need to calculate a reflection vector that would occur from a
-	 * surface with a â€œupward facing planeâ€�. Vectors of unit length are also
+	 * surface with a "upward facing plane". Vectors of unit length are also
 	 * called normals.
 	 * </p>
 	 * <b>Example for a normalized vector between one(1,1) and two(-1,-1):</b>
@@ -610,7 +610,7 @@ public final class Vec3f {
 	 *
 	 * We must take care when calculating the normalized vector because zero
 	 * length vectors cannot be normalized. Normalizing a zero-length vector
-	 * will usually result in a â€œdivide-by-zeroâ€� error. Usually we resolve
+	 * will usually result in a "divide-by-zero" error. Usually we resolve
 	 * this by performing the normalization in multiple steps:
 	 *
 	 * <ul>

@@ -150,6 +150,11 @@ public class QuatfTest {
 	public void testGetW() {
 		Assert.assertTrue(Quat.of(1, 1, 1, 1).getW() == 1f);
 	}
+	
+	@Test
+	public void testHashcode(){
+		int result = Quatf.of(1, 1, 1, 1).hashCode();
+	}
 
 	@Test
 	public void testEquals() {

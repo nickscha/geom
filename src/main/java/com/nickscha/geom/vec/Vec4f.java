@@ -600,7 +600,7 @@ public final class Vec4f {
 	 * by their length. This is necessary for example when we want to find out
 	 * if another object, or point is in front of or behind our reference frame,
 	 * or when we need to calculate a reflection vector that would occur from a
-	 * surface with a â€œupward facing planeâ€�. Vectors of unit length are also
+	 * surface with a "upward facing plane". Vectors of unit length are also
 	 * called normals.
 	 * </p>
 	 * <b>Example for a normalized vector between one(1,1) and two(-1,-1):</b>
@@ -618,8 +618,8 @@ public final class Vec4f {
 	 *
 	 * We must take care when calculating the normalized vector because zero
 	 * length vectors cannot be normalized. Normalizing a zero-length vector
-	 * will usually result in a â€œdivide-by-zeroâ€� error. Usually we resolve
-	 * this by performing the normalization in multiple steps:
+	 * will usually result in a "divide-by-zero" error. Usually we resolve this
+	 * by performing the normalization in multiple steps:
 	 *
 	 * <ul>
 	 * <li>Calculate the length squared of the vector (only calculate the
@@ -759,15 +759,16 @@ public final class Vec4f {
 	public Vec4f lerp(Vec4f dest, float amt) {
 		return dest.sub(this).mul(amt).add(this);
 	}
-	
+
 	/**
 	 * Transforms this three dimensional vector to its screen space (x,y)
 	 * position based on supplied view and projection matrix.
+	 * 
 	 * @param viewMatrix
 	 * @param projectionMatrix
 	 * @return the screen space position of this vector
 	 */
-	//TODO adjust matrix class
+	// TODO adjust matrix class
 	public Vec2f screenSpace(Mat4f viewMatrix, Mat4f projectionMatrix) {
 		Vec4f coords = this;
 		// Mat4f.transform(viewMatrix, coords, coords);

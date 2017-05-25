@@ -335,7 +335,9 @@ public class Vec4fTest {
 
 	@Test
 	public void testDelta() {
-
+		Vec4f two = Vec4f.of(0, 0, 4, 0);
+		float result = two.delta();
+		Assert.assertTrue(result == 1.5707964f);
 	}
 
 	@Test
@@ -392,6 +394,22 @@ public class Vec4fTest {
 		
 		Vec4f anObjectInScene = Vec4f.of(5, 3, -5, 1f);
 		Vec2f screenSpace = anObjectInScene.screenSpace(viewMatrix, projectionMatrix);
+	}
+	
+	@Test
+	public void testVec2(){
+		Vec4f one = Vec4f.of(1,2,3, 0);
+		Vec2f result = one.vec2();
+		
+		Assert.assertEquals(Vec2f.of(1, 2), result);
+	}
+	
+	@Test
+	public void testVec3(){
+		Vec4f one = Vec4f.of(1,2,3, 0);
+		
+		Vec3f result = one.vec3();
+		Assert.assertEquals(Vec3f.of(1, 2, 3), result);
 	}
 
 	@Test

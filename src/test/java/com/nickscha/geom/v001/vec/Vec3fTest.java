@@ -22,6 +22,7 @@ import com.nickscha.geom.mat.Mat4f;
 import com.nickscha.geom.vec.Vec;
 import com.nickscha.geom.vec.Vec2f;
 import com.nickscha.geom.vec.Vec3f;
+import com.nickscha.geom.vec.Vec4f;
 
 public class Vec3fTest {
 
@@ -446,6 +447,25 @@ public class Vec3fTest {
 	public void testSwizzleZy() {
 		Vec2f result = first.zy();
 		Assert.assertEquals(Vec2f.of(2, 4), result);
+	}
+	
+	@Test
+	public void testVec2(){
+		Vec3f one = Vec3f.of(1,2,3);
+		Vec2f result = one.vec2();
+		
+		Assert.assertEquals(Vec2f.of(1, 2), result);
+	}
+	
+	@Test
+	public void testVec4(){
+		Vec3f one = Vec3f.of(1,2,3);
+		
+		Vec4f result = one.vec4();
+		Assert.assertEquals(Vec4f.of(1, 2, 3, 0), result);
+		
+		result = one.vec4(1);
+		Assert.assertEquals(Vec4f.of(1, 2, 3, 1), result);
 	}
 
 	@Test
