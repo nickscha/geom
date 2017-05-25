@@ -46,10 +46,13 @@ public final class Mat4f {
 	/**
 	 * Represents an identity matrix
 	 */
-	public static final Mat4f IDENTITY = new Mat4f().initIdentity();
+	public static final Mat4f IDENTITY = Mat4f.initIdentity();
 
 	private final float[][] m;
 
+	/**
+	 * Initializes the matrix where all fields are set to zero.
+	 */
 	public Mat4f() {
 		this.m = new float[GROUPS][FIELDS];
 	}
@@ -57,50 +60,37 @@ public final class Mat4f {
 	public Mat4f(float[][] m) {
 		this.m = m;
 	}
-
-	public Mat4f initIdentity() {
-		m[0][0] = 1;
-		m[0][1] = 0;
-		m[0][2] = 0;
-		m[0][3] = 0;
-		m[1][0] = 0;
-		m[1][1] = 1;
-		m[1][2] = 0;
-		m[1][3] = 0;
-		m[2][0] = 0;
-		m[2][1] = 0;
-		m[2][2] = 1;
-		m[2][3] = 0;
-		m[3][0] = 0;
-		m[3][1] = 0;
-		m[3][2] = 0;
-		m[3][3] = 1;
-
-		return this;
+	
+	public static Mat4f of(float[][] m){
+		return new Mat4f(m);
 	}
 
-	public Mat4f initTranslation(float x, float y, float z) {
+	public static Mat4f initIdentity() {
+		final float[][] m = new float[GROUPS][FIELDS];
+
 		m[0][0] = 1;
-		m[0][1] = 0;
-		m[0][2] = 0;
-		m[0][3] = x;
-		m[1][0] = 0;
 		m[1][1] = 1;
-		m[1][2] = 0;
+		m[2][2] = 1;
+		m[3][3] = 1;
+
+		return new Mat4f(m);
+	}
+
+	public static Mat4f initTranslation(float x, float y, float z) {
+		final float[][] m = new float[GROUPS][FIELDS];
+
+		m[0][0] = 1;
+		m[0][3] = x;
+		m[1][1] = 1;
 		m[1][3] = y;
-		m[2][0] = 0;
-		m[2][1] = 0;
 		m[2][2] = 1;
 		m[2][3] = z;
-		m[3][0] = 0;
-		m[3][1] = 0;
-		m[3][2] = 0;
 		m[3][3] = 1;
 
-		return this;
+		return new Mat4f(m);
 	}
 
-	public Mat4f initRotation(float x, float y, float z) {
+	public static Mat4f initRotation(float x, float y, float z) {
 		Mat4f rx = new Mat4f();
 		Mat4f ry = new Mat4f();
 		Mat4f rz = new Mat4f();
@@ -118,63 +108,33 @@ public final class Mat4f {
 
 		rz.m[0][0] = cosZ;
 		rz.m[0][1] = -sinZ;
-		rz.m[0][2] = 0;
-		rz.m[0][3] = 0;
 		rz.m[1][0] = sinZ;
 		rz.m[1][1] = cosZ;
-		rz.m[1][2] = 0;
-		rz.m[1][3] = 0;
-		rz.m[2][0] = 0;
-		rz.m[2][1] = 0;
 		rz.m[2][2] = 1;
-		rz.m[2][3] = 0;
-		rz.m[3][0] = 0;
-		rz.m[3][1] = 0;
-		rz.m[3][2] = 0;
 		rz.m[3][3] = 1;
 
 		rx.m[0][0] = 1;
-		rx.m[0][1] = 0;
-		rx.m[0][2] = 0;
-		rx.m[0][3] = 0;
-		rx.m[1][0] = 0;
 		rx.m[1][1] = cosX;
 		rx.m[1][2] = -sinX;
-		rx.m[1][3] = 0;
-		rx.m[2][0] = 0;
 		rx.m[2][1] = sinX;
 		rx.m[2][2] = cosX;
-		rx.m[2][3] = 0;
-		rx.m[3][0] = 0;
-		rx.m[3][1] = 0;
-		rx.m[3][2] = 0;
 		rx.m[3][3] = 1;
 
 		ry.m[0][0] = cosY;
-		ry.m[0][1] = 0;
 		ry.m[0][2] = -sinY;
-		ry.m[0][3] = 0;
-		ry.m[1][0] = 0;
 		ry.m[1][1] = 1;
-		ry.m[1][2] = 0;
-		ry.m[1][3] = 0;
 		ry.m[2][0] = sinY;
-		ry.m[2][1] = 0;
 		ry.m[2][2] = cosY;
-		ry.m[2][3] = 0;
-		ry.m[3][0] = 0;
-		ry.m[3][1] = 0;
-		ry.m[3][2] = 0;
 		ry.m[3][3] = 1;
 
 		return new Mat4f(rz.mul(ry.mul(rx)).getM());
 	}
 
-	public Mat4f initScale(Vec3f scale) {
+	public static Mat4f initScale(Vec3f scale) {
 		return initScale(scale.getX(), scale.getY(), scale.getZ());
 	}
 
-	public Mat4f initScale(float x, float y, float z) {
+	public static Mat4f initScale(float x, float y, float z) {
 		final float[][] m = new float[GROUPS][FIELDS];
 
 		m[0][0] = x;
@@ -185,22 +145,21 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public Mat4f modelMatrix(Vec3f position, float scale) {
-		Mat4f modelMatrix = new Mat4f();
-		modelMatrix.initTranslation(position.getX(), position.getY(), position.getZ());
+	public static Mat4f initModelMatrix(Vec3f position, float scale) {
+		Mat4f modelMatrix = Mat4f.initTranslation(position.getX(), position.getY(), position.getZ());
 		modelMatrix.scale(Vec3f.of(scale));
 		return modelMatrix;
 	}
 
-	public Mat4f viewMatrix() {
+	public static Mat4f initViewMatrix() {
 		return null;
 	}
 
-	public Mat4f projectionMatrix(float fov, float aspectRatio, float zNear, float zFar) {
+	public static Mat4f initProjectionMatrix(float fov, float aspectRatio, float zNear, float zFar) {
 		return initPerspective(fov, aspectRatio, zNear, zFar);
 	}
 
-	public Mat4f initPerspective(float fov, float aspectRatio, float zNear, float zFar) {
+	public static Mat4f initPerspective(float fov, float aspectRatio, float zNear, float zFar) {
 		float tanHalfFOV = (float) Math.tan(fov / 2);
 		float zRange = zNear - zFar;
 
@@ -214,7 +173,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public Mat4f initOrthographic(float left, float right, float bottom, float top, float near, float far) {
+	public static Mat4f initOrthographic(float left, float right, float bottom, float top, float near, float far) {
 		float width = right - left;
 		float height = top - bottom;
 		float depth = far - near;
@@ -231,7 +190,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public Mat4f initRotation(Vec3f forward, Vec3f up) {
+	public static Mat4f initRotation(Vec3f forward, Vec3f up) {
 		Vec3f f = forward.normalize();
 
 		Vec3f r = up.normalize();
@@ -242,7 +201,7 @@ public final class Mat4f {
 		return initRotation(f, u, r);
 	}
 
-	public Mat4f initRotation(Vec3f forward, Vec3f up, Vec3f right) {
+	public static Mat4f initRotation(Vec3f forward, Vec3f up, Vec3f right) {
 		Vec3f f = forward;
 		Vec3f r = right;
 		Vec3f u = up;
@@ -406,20 +365,19 @@ public final class Mat4f {
 		 * below uses a condense form of doing all this making use of some
 		 * mathematical identities to simplify the overall expression.
 		 */
-		float a = m[1][0] * m[2][3], b = m[1][3] * m[2][1], c = m[1][0] * m[2][1], d = m[1][1] * m[2][3],
-				e = m[1][3] * m[2][0], f = m[1][1] * m[2][0];
-		float g = m[0][3] * m[2][0], h = m[0][1] * m[2][3], i = m[0][1] * m[2][0], j = m[0][3] * m[2][1],
-				k = m[0][0] * m[2][3], l = m[0][0] * m[2][1];
-		float m_ = m[0][0] * m[1][3], n = m[0][3] * m[1][1], o = m[0][0] * m[1][1], p = m[0][1] * m[1][3],
-				q = m[0][3] * m[1][0], r = m[0][1] * m[1][0];
-		float m1x, m1y, m1z;
-		m1x = (d + e + f - a - b - c) * (1.0f - y) + (a - b - c + d - e + f) * y;
-		m1y = (j + k + l - g - h - i) * (1.0f - y) + (g - h - i + j - k + l) * y;
-		m1z = (p + q + r - m_ - n - o) * (1.0f - y) + (m_ - n - o + p - q + r) * y;
-		float m2x, m2y, m2z;
-		m2x = (b - c - d + e + f - a) * (1.0f - y) + (a + b - c - d - e + f) * y;
-		m2y = (h - i - j + k + l - g) * (1.0f - y) + (g + h - i - j - k + l) * y;
-		m2z = (n - o - p + q + r - m_) * (1.0f - y) + (m_ + n - o - p - q + r) * y;
+		float a = m[1][0] * m[2][3], b = m[1][3] * m[2][1], c = m[1][0] * m[2][1], d = m[1][1] * m[2][3];
+		float e = m[1][3] * m[2][0], f = m[1][1] * m[2][0];
+		float g = m[0][3] * m[2][0], h = m[0][1] * m[2][3], i = m[0][1] * m[2][0], j = m[0][3] * m[2][1];
+		float k = m[0][0] * m[2][3], l = m[0][0] * m[2][1];
+		float v = m[0][0] * m[1][3], n = m[0][3] * m[1][1], o = m[0][0] * m[1][1], p = m[0][1] * m[1][3];
+		float q = m[0][3] * m[1][0], r = m[0][1] * m[1][0];
+
+		float m1x = (d + e + f - a - b - c) * (1.0f - y) + (a - b - c + d - e + f) * y;
+		float m1y = (j + k + l - g - h - i) * (1.0f - y) + (g - h - i + j - k + l) * y;
+		float m1z = (p + q + r - v - n - o) * (1.0f - y) + (v - n - o + p - q + r) * y;
+		float m2x = (b - c - d + e + f - a) * (1.0f - y) + (a + b - c - d - e + f) * y;
+		float m2y = (h - i - j + k + l - g) * (1.0f - y) + (g + h - i - j - k + l) * y;
+		float m2z = (n - o - p + q + r - v) * (1.0f - y) + (v + n - o - p - q + r) * y;
 
 		float x_ = m1x * (1.0f - x) + m2x * x;
 		float y_ = m1y * (1.0f - x) + m2y * x;
