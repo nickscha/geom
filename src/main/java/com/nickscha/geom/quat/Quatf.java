@@ -26,6 +26,12 @@ import com.nickscha.geom.vec.Vec3f;
 public final class Quatf {
 
 	/**
+	 * Defines how much fields are stored in this class which will be used for
+	 * optimal binary serialization
+	 */
+	public static final int FIELDS = 4;
+
+	/**
 	 * Defines how much bytes will be needed to store this type as binary
 	 */
 	public static final byte BYTES = 16;
@@ -307,6 +313,74 @@ public final class Quatf {
 
 	public float getW() {
 		return w;
+	}
+	
+	/**
+	 * Converts the vector to a byte array optimized for high performance
+	 * serialization.
+	 *
+	 * @return this vector comprised in a byte array.
+	 */
+	public byte[] toBytes() {
+		return toBytes(new byte[BYTES], 0);
+	}
+
+	/**
+	 * Converts the vector to the specified byte array optimized for high
+	 * performance serialization.
+	 *
+	 * @param data the array to store the data
+	 * @return the byte array
+	 */
+	public byte[] toBytes(byte[] data) {
+		return toBytes(data, 0);
+	}
+
+	/**
+	 * Converts the vector to the specified byte array optimized for high
+	 * performance serialization.
+	 *
+	 * @param data the array to store the data
+	 * @param offset the offset to start from
+	 * @return the byte array
+	 */
+	public byte[] toBytes(byte[] data, int offset) {
+		int[] values = new int[] { Float.floatToIntBits(x), Float.floatToIntBits(y), Float.floatToIntBits(z),
+				Float.floatToIntBits(w) };
+		for (int i = 0; i < FIELDS; i++) {
+			data[offset++] = (byte) (values[i] >> 24);
+			data[offset++] = (byte) (values[i] >> 16);
+			data[offset++] = (byte) (values[i] >> 8);
+			data[offset++] = (byte) (values[i]);
+		}
+		return data;
+	}
+
+	/**
+	 * Converts the specified byte array (length >= 3) to a new vector
+	 *
+	 * @param data the byte data (0=X,1=Y,2=Z)
+	 * @return the new vector from the specified byte array
+	 */
+	public static Quatf fromBytes(byte[] data) {
+		return fromBytes(data, 0);
+	}
+
+	/**
+	 * Converts the specified byte array (length >= 3) to a new vector by the
+	 * given offset
+	 *
+	 * @param data the byte data (0=X,1=Y,2=Z)
+	 * @param offset
+	 * @return the new vector from the specified byte array and offset
+	 */
+	public static Quatf fromBytes(byte[] data, int offset) {
+		float[] values = new float[FIELDS];
+		for (int i = 0; i < FIELDS; i++) {
+			values[i] = Float.intBitsToFloat((data[offset++] & 0xFF) << 24 | (data[offset++] & 0xFF) << 16
+					| (data[offset++] & 0xFF) << 8 | (data[offset++] & 0xFF));
+		}
+		return new Quatf(values[0], values[1], values[2], values[3]);
 	}
 
 	@Override
