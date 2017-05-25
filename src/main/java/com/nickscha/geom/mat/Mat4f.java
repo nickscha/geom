@@ -44,6 +44,11 @@ public final class Mat4f {
 	public static final byte BYTES = 64;
 
 	/**
+	 * Represents an empty matrix
+	 */
+	public static final Mat4f ZERO = new Mat4f();
+
+	/**
 	 * Represents an identity matrix
 	 */
 	public static final Mat4f IDENTITY = Mat4f.initIdentity();
@@ -60,8 +65,8 @@ public final class Mat4f {
 	public Mat4f(float[][] m) {
 		this.m = m;
 	}
-	
-	public static Mat4f of(float[][] m){
+
+	public static Mat4f of(float[][] m) {
 		return new Mat4f(m);
 	}
 
@@ -151,12 +156,17 @@ public final class Mat4f {
 		return modelMatrix;
 	}
 
-	public static Mat4f initViewMatrix() {
-		return null;
+	public static Mat4f initViewMatrix(Vec3f position, Mat4f rotationMatrix) {
+		Mat4f translation = Mat4f.initTranslation(position.getX(), position.getY(), position.getZ());
+		return rotationMatrix.mul(translation);
 	}
 
 	public static Mat4f initProjectionMatrix(float fov, float aspectRatio, float zNear, float zFar) {
 		return initPerspective(fov, aspectRatio, zNear, zFar);
+	}
+
+	public static Mat4f initMvpMatrix(Mat4f modelMatrix, Mat4f viewMatrix, Mat4f projectionMatrix) {
+		return projectionMatrix.mul(viewMatrix).mul(modelMatrix);
 	}
 
 	public static Mat4f initPerspective(float fov, float aspectRatio, float zNear, float zFar) {

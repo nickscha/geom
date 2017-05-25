@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 /**
- * <b>Matricies Types</b>
+ * <b>Matrices Types</b>
  * 
  * @author nickscha
  * @since 0.0.1
