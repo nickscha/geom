@@ -28,6 +28,17 @@ import com.nickscha.geom.vec.Vec3f;
 public final class Mat4f {
 
 	/**
+	 * Defines how much many groups are set for the amount of fields.
+	 */
+	public static final int GROUPS = 4;
+
+	/**
+	 * Defines how much fields are stored per group in this class which will be
+	 * used for optimal binary serialization
+	 */
+	public static final int FIELDS = 4;
+
+	/**
 	 * Defines how much bytes will be needed to store this type as binary
 	 */
 	public static final byte BYTES = 64;
@@ -531,6 +542,76 @@ public final class Mat4f {
 
 	private void set(int x, int y, float value) {
 		m[x][y] = value;
+	}
+
+	/**
+	 * Converts the vector to a byte array optimized for high performance
+	 * serialization.
+	 *
+	 * @return this vector comprised in a byte array.
+	 */
+	public byte[] toBytes() {
+		return toBytes(new byte[BYTES], 0);
+	}
+
+	/**
+	 * Converts the vector to the specified byte array optimized for high
+	 * performance serialization.
+	 *
+	 * @param data the array to store the data
+	 * @return the byte array
+	 */
+	public byte[] toBytes(byte[] data) {
+		return toBytes(data, 0);
+	}
+
+	/**
+	 * Converts the vector to the specified byte array optimized for high
+	 * performance serialization.
+	 *
+	 * @param data the array to store the data
+	 * @param offset the offset to start from
+	 * @return the byte array
+	 */
+	public byte[] toBytes(byte[] data, int offset) {
+		for (int i = 0; i < GROUPS; i++) {
+			for (int j = 0; j < FIELDS; j++) {
+				data[offset++] = (byte) (Float.floatToIntBits(m[i][j]) >> 24);
+				data[offset++] = (byte) (Float.floatToIntBits(m[i][j]) >> 16);
+				data[offset++] = (byte) (Float.floatToIntBits(m[i][j]) >> 8);
+				data[offset++] = (byte) (Float.floatToIntBits(m[i][j]));
+			}
+		}
+		return data;
+	}
+
+	/**
+	 * Converts the specified byte array (length >= 3) to a new vector
+	 *
+	 * @param data the byte data (0=X,1=Y,2=Z)
+	 * @return the new vector from the specified byte array
+	 */
+	public static Mat4f fromBytes(byte[] data) {
+		return fromBytes(data, 0);
+	}
+
+	/**
+	 * Converts the specified byte array (length >= 3) to a new vector by the
+	 * given offset
+	 *
+	 * @param data the byte data (0=X,1=Y,2=Z)
+	 * @param offset
+	 * @return the new vector from the specified byte array and offset
+	 */
+	public static Mat4f fromBytes(byte[] data, int offset) {
+		float[][] values = new float[GROUPS][FIELDS];
+		for (int i = 0; i < GROUPS; i++) {
+			for (int j = 0; j < FIELDS; j++) {
+				values[i][j] = Float.intBitsToFloat((data[offset++] & 0xFF) << 24 | (data[offset++] & 0xFF) << 16
+						| (data[offset++] & 0xFF) << 8 | (data[offset++] & 0xFF));
+			}
+		}
+		return new Mat4f(values);
 	}
 
 	@Override

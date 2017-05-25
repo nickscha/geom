@@ -37,7 +37,7 @@ public class Mat4fTest {
 		Assert.assertTrue(mat4f.get(2, 2) == 1f);
 		Assert.assertTrue(mat4f.get(3, 3) == 1f);
 	}
-	
+
 	@Test
 	public void testMat4fTranslation() {
 		Mat4f mat4f = new Mat4f().initTranslation(2, 2, 2);
@@ -50,7 +50,7 @@ public class Mat4fTest {
 		Assert.assertTrue(mat4f.get(2, 3) == 2f);
 		Assert.assertTrue(mat4f.get(3, 3) == 1f);
 	}
-	
+
 	@Test
 	public void testMat4fScale() {
 		Mat4f mat4f = new Mat4f().initScale(2, 2, 2);
@@ -60,18 +60,17 @@ public class Mat4fTest {
 		Assert.assertTrue(mat4f.get(2, 2) == 2f);
 		Assert.assertTrue(mat4f.get(3, 3) == 1f);
 	}
-	
+
 	@Test
 	public void testMat4fRotation() {
 		Mat4f mat4f = new Mat4f().initRotation(2, 2, 2);
 	}
-	
+
 	@Test
 	public void testMat4fPerspective() {
 		Mat4f mat4f = new Mat4f().initPerspective(90, 1, 5, 100);
 	}
-	
-	
+
 	@Test
 	public void testMat4fFrustum() {
 		Mat4f mat4f = new Mat4f().initOrthographic(1, 1, 1, 1, 5, 100);
@@ -79,26 +78,51 @@ public class Mat4fTest {
 		new Mat4f().frustumNonPost(1, 1, 1, 1, 5, 100);
 		new Mat4f().frustumRayDir(1, 2);
 	}
-	
+
 	@Test
 	public void testMat4fDeterminant() {
 		float result = new Mat4f().determinant();
 	}
-	
+
 	@Test
 	public void testMat4fDeterminant3x3() {
 		float result = new Mat4f().determinant3x3();
 	}
-	
+
 	@Test
-	public void testEquals(){
+	public void testToBytes() {
+		Mat4f first = new Mat4f().initIdentity();
+		byte[] bytes = first.toBytes();
+		Assert.assertTrue(bytes.length == Mat4f.BYTES);
+	}
+
+	@Test
+	public void testToBytesData() {
+		Mat4f first = new Mat4f().initIdentity();
+		byte[] data = new byte[Mat4f.BYTES];
+		byte[] bytes = first.toBytes(data);
+		Assert.assertTrue(bytes.length == Mat4f.BYTES);
+	}
+
+	@Test
+	public void testFromBytes() {
+		Mat4f first = new Mat4f().initIdentity();
+		byte[] bytes = first.toBytes();
+		Mat4f fromBytes = Mat4f.fromBytes(bytes);
+
+		Assert.assertNotNull(fromBytes);
+		Assert.assertEquals(first, fromBytes);
+	}
+
+	@Test
+	public void testEquals() {
 		Assert.assertTrue(new Mat4f().initIdentity().equals(new Mat4f().initIdentity()));
 	}
-	
+
 	@Test
-	public void testToString(){
+	public void testToString() {
 		String result = new Mat4f().initIdentity().toString();
-		
+
 		Assert.assertEquals("mat4f[(1.0/0.0/0.0/0.0),(0.0/1.0/0.0/0.0),(0.0/0.0/1.0/0.0),(0.0/0.0/0.0/1.0)]", result);
 	}
 
