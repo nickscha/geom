@@ -21,6 +21,7 @@ import org.junit.Test;
 import com.nickscha.geom.quat.Quat;
 import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec3f;
+import com.nickscha.geom.vec.Vec4f;
 
 /**
  * @author nickscha
@@ -160,6 +161,31 @@ public class QuatfTest {
 	@Test
 	public void testHashcode(){
 		int result = Quatf.of(1, 1, 1, 1).hashCode();
+	}
+	
+	@Test
+	public void testToBytes() {
+		Quatf first = Quatf.of(1, 2, 3, 4);
+		byte[] bytes = first.toBytes();
+		Assert.assertTrue(bytes.length == Quatf.BYTES);
+	}
+
+	@Test
+	public void testToBytesData() {
+		Quatf first = Quatf.of(1, 2, 3, 4);
+		byte[] data = new byte[Quatf.BYTES];
+		byte[] bytes = first.toBytes(data);
+		Assert.assertTrue(bytes.length == Quatf.BYTES);
+	}
+
+	@Test
+	public void testFromBytes() {
+		Quatf first = Quatf.of(1, 2, 3, 4);
+		byte[] bytes = first.toBytes();
+		Quatf fromBytes = Quatf.fromBytes(bytes);
+
+		Assert.assertNotNull(fromBytes);
+		Assert.assertEquals(first, fromBytes);
 	}
 
 	@Test
