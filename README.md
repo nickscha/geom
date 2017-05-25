@@ -15,7 +15,7 @@ A lightweight but powerful geometry libary with productive readiness API and flu
 
 ## Supported Types
 
-Class names are aligned with GLSL names.
+Class names are aligned with GLSL names. Delegate classes providing factory methods to components.
 
 | Type          | Delegate | Components                 |
 | ------------- | :------- | -------------------------: |
