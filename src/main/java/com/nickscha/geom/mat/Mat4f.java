@@ -164,7 +164,8 @@ public final class Mat4f {
 	/**
 	 * 
 	 * @param fov the field of view
-	 * @param aspectRatio the aspect ratio (for example: screen.width/screen.height)
+	 * @param aspectRatio the aspect ratio (for example:
+	 *            screen.width/screen.height)
 	 * @param zNear first distance to consider (clip object to near)
 	 * @param zFar last distance to ignore (clip object to far)
 	 * @return the projection (perspective) matrix for supplied parameters
@@ -182,7 +183,8 @@ public final class Mat4f {
 	 * 
 	 * 
 	 * @param fov the field of view
-	 * @param aspectRatio the aspect ratio (for example: screen.width/screen.height)
+	 * @param aspectRatio the aspect ratio (for example:
+	 *            screen.width/screen.height)
 	 * @param zNear first distance to consider (clip object to near)
 	 * @param zFar last distance to ignore (clip object to far)
 	 * @return the perspective (projection) matrix for supplied parameters
@@ -202,7 +204,8 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initOrthographicMatrix(float left, float right, float bottom, float top, float near, float far) {
+	public static Mat4f initOrthographicMatrix(float left, float right, float bottom, float top, float near,
+			float far) {
 		float width = right - left;
 		float height = top - bottom;
 		float depth = far - near;
@@ -246,6 +249,29 @@ public final class Mat4f {
 		m[2][1] = f.getY();
 		m[2][2] = f.getZ();
 		m[3][3] = 1;
+
+		return new Mat4f(m);
+	}
+	
+
+	public static Mat4f lookAt(Vec3f eye, Vec3f center, Vec3f up) {
+		Vec3f f = center.sub(eye).normalize();
+		Vec3f s = f.cross(up).normalize();
+		Vec3f u = s.cross(f);
+
+		final float[][] m = new float[GROUPS][FIELDS];
+		m[0][0] = s.getX();
+		m[0][1] = s.getY();
+		m[0][2] = s.getZ();
+		m[1][0] = u.getX();
+		m[1][1] = u.getY();
+		m[1][2] = u.getZ();
+		m[2][0] = -f.getX();
+		m[2][1] = -f.getY();
+		m[2][2] = -f.getZ();
+		m[0][3] = -s.dot(eye);
+		m[1][3] = -u.dot(eye);
+		m[2][3] = f.dot(eye);
 
 		return new Mat4f(m);
 	}

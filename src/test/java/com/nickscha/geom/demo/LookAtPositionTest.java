@@ -17,6 +17,9 @@ package com.nickscha.geom.demo;
 
 import org.junit.Test;
 
+import com.nickscha.geom.mat.Mat4f;
+import com.nickscha.geom.vec.Vec3f;
+
 public class LookAtPositionTest {
 
 	/**
@@ -28,8 +31,9 @@ public class LookAtPositionTest {
 	 */
 	@Test
 	public void testLookAtPosition() {
-		// Vec3f camera = Vec3f.of(0, 5, 5);
-		// Vec3f modelToLookAtCamera = Vec3f.of(7, 7, 7);
+		Vec3f camera = Vec3f.of(0, 5, 5);
+		Vec3f modelToLookAtCamera = Vec3f.of(7, 7, 7);
 
+		Mat4f.lookAt(camera, modelToLookAtCamera, Vec3f.of(0, 1, 0));
 	}
 }
