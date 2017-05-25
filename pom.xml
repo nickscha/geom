@@ -31,6 +31,7 @@
 		<developer>
 			<id>nickscha</id>
 			<name>nickscha</name>
+			<url>https://nickscha.github.io/</url>
 		</developer>
 	</developers>
 
@@ -59,5 +60,11 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<scm>
+		<connection>scm:git:git@github.com:nickscha/geom.git</connection>
+		<url>scm:git:git@github.com:nickscha/geom.git</url>
+		<developerConnection>scm:git:git@github.com:nickscha/geom.git</developerConnection>
+	</scm>
 
 </project>
