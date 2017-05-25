@@ -23,6 +23,12 @@ import com.nickscha.geom.vec.Vec1f;
 import com.nickscha.geom.vec.Vec2f;
 import com.nickscha.geom.vec.Vec3f;
 
+/**
+ * @author nickscha
+ * @since 0.0.1
+ * @version 0.0.1
+ *
+ */
 public class VecTest {
 
 	@Test

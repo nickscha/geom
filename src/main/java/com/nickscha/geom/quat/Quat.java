@@ -15,6 +15,12 @@
  */
 package com.nickscha.geom.quat;
 
+/**
+ * @author nickscha
+ * @since 0.0.1
+ * @version 0.0.1
+ *
+ */
 public final class Quat {
 
 	private Quat() {

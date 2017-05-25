@@ -22,6 +22,12 @@ import com.nickscha.geom.quat.Quat;
 import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec3f;
 
+/**
+ * @author nickscha
+ * @since 0.0.1
+ * @version 0.0.1
+ *
+ */
 public class QuatfTest {
 
 	@Test

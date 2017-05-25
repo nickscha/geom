@@ -21,6 +21,12 @@ import org.junit.Test;
 import com.nickscha.geom.vec.Vec;
 import com.nickscha.geom.vec.Vec1f;
 
+/**
+ * @author nickscha
+ * @since 0.0.1
+ * @version 0.0.1
+ *
+ */
 public class Vec1fTest {
 
 	Vec1f first = Vec.of(6);

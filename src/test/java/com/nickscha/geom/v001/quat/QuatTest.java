@@ -21,7 +21,12 @@ import org.junit.Test;
 import com.nickscha.geom.quat.Quat;
 import com.nickscha.geom.quat.Quatf;
 
-
+/**
+ * @author nickscha
+ * @since 0.0.1
+ * @version 0.0.1
+ *
+ */
 public class QuatTest {
 	
 	@Test

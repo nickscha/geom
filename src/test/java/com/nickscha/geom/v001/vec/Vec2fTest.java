@@ -22,6 +22,12 @@ import com.nickscha.geom.vec.Vec;
 import com.nickscha.geom.vec.Vec1f;
 import com.nickscha.geom.vec.Vec2f;
 
+/**
+ * @author nickscha
+ * @since 0.0.1
+ * @version 0.0.1
+ *
+ */
 public class Vec2fTest {
 
 	Vec2f first = Vec.of(6, 4);

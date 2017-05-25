@@ -20,6 +20,12 @@ import org.junit.Test;
 
 import com.nickscha.geom.mat.Mat4f;
 
+/**
+ * @author nickscha
+ * @since 0.0.1
+ * @version 0.0.1
+ *
+ */
 public class Mat4fTest {
 
 	@Test
