@@ -108,46 +108,6 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f rotationMatrix(float x, float y, float z) {
-		Mat4f rx = new Mat4f();
-		Mat4f ry = new Mat4f();
-		Mat4f rz = new Mat4f();
-
-		x = (float) Math.toRadians(x);
-		y = (float) Math.toRadians(y);
-		z = (float) Math.toRadians(z);
-
-		final float cosZ = (float) Math.cos(z);
-		final float sinZ = (float) Math.sin(z);
-		final float cosX = (float) Math.cos(x);
-		final float sinX = (float) Math.sin(x);
-		final float cosY = (float) Math.cos(y);
-		final float sinY = (float) Math.sin(y);
-
-		rz.m[0][0] = cosZ;
-		rz.m[0][1] = -sinZ;
-		rz.m[1][0] = sinZ;
-		rz.m[1][1] = cosZ;
-		rz.m[2][2] = 1;
-		rz.m[3][3] = 1;
-
-		rx.m[0][0] = 1;
-		rx.m[1][1] = cosX;
-		rx.m[1][2] = -sinX;
-		rx.m[2][1] = sinX;
-		rx.m[2][2] = cosX;
-		rx.m[3][3] = 1;
-
-		ry.m[0][0] = cosY;
-		ry.m[0][2] = -sinY;
-		ry.m[1][1] = 1;
-		ry.m[2][0] = sinY;
-		ry.m[2][2] = cosY;
-		ry.m[3][3] = 1;
-
-		return new Mat4f(rz.mul(ry.mul(rx)).getM());
-	}
-
 	public static Mat4f scaleMatrix(Vec3f scale) {
 		return scaleMatrix(scale.getX(), scale.getY(), scale.getZ());
 	}
@@ -217,8 +177,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f orthographicMatrix(float left, float right, float bottom, float top, float near,
-			float far) {
+	public static Mat4f orthographicMatrix(float left, float right, float bottom, float top, float near, float far) {
 		float width = right - left;
 		float height = top - bottom;
 		float depth = far - near;
@@ -235,7 +194,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initRotation(Vec3f forward, Vec3f up) {
+	public static Mat4f rotationMatrix(Vec3f forward, Vec3f up) {
 		Vec3f f = forward.normalize();
 
 		Vec3f r = up.normalize();
@@ -266,6 +225,46 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
+	public static Mat4f rotationMatrix(float x, float y, float z) {
+		Mat4f rx = new Mat4f();
+		Mat4f ry = new Mat4f();
+		Mat4f rz = new Mat4f();
+
+		x = (float) Math.toRadians(x);
+		y = (float) Math.toRadians(y);
+		z = (float) Math.toRadians(z);
+
+		final float cosZ = (float) Math.cos(z);
+		final float sinZ = (float) Math.sin(z);
+		final float cosX = (float) Math.cos(x);
+		final float sinX = (float) Math.sin(x);
+		final float cosY = (float) Math.cos(y);
+		final float sinY = (float) Math.sin(y);
+
+		rz.m[0][0] = cosZ;
+		rz.m[0][1] = -sinZ;
+		rz.m[1][0] = sinZ;
+		rz.m[1][1] = cosZ;
+		rz.m[2][2] = 1;
+		rz.m[3][3] = 1;
+
+		rx.m[0][0] = 1;
+		rx.m[1][1] = cosX;
+		rx.m[1][2] = -sinX;
+		rx.m[2][1] = sinX;
+		rx.m[2][2] = cosX;
+		rx.m[3][3] = 1;
+
+		ry.m[0][0] = cosY;
+		ry.m[0][2] = -sinY;
+		ry.m[1][1] = 1;
+		ry.m[2][0] = sinY;
+		ry.m[2][2] = cosY;
+		ry.m[3][3] = 1;
+
+		return new Mat4f(rz.mul(ry.mul(rx)).getM());
+	}
+
 	public static Mat4f lookAtMatrix(Vec3f eye, Vec3f target, Vec3f up) {
 		Vec3f f = target.sub(eye).normalize();
 		Vec3f s = f.cross(up).normalize();
@@ -285,7 +284,7 @@ public final class Mat4f {
 		res.m[1][3] = -u.dot(eye);
 		res.m[2][3] = f.dot(eye);
 		res.m[3][3] = 1.0f;
-	
+
 		return res;
 	}
 

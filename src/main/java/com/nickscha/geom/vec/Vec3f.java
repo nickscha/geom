@@ -951,7 +951,7 @@ public final class Vec3f {
 	 *
 	 * @return the new matrix
 	 */
-	public Mat4f mat4Translation() {
+	public Mat4f translationMatrix() {
 		return Mat4f.translationMatrix(x, y, z);
 	}
 
@@ -961,7 +961,7 @@ public final class Vec3f {
 	 *
 	 * @return the new matrix
 	 */
-	public Mat4f mat4Scale() {
+	public Mat4f scaleMatrix() {
 		return Mat4f.scaleMatrix(x, y, z);
 	}
 
@@ -971,7 +971,7 @@ public final class Vec3f {
 	 *
 	 * @return the new matrix
 	 */
-	public Mat4f mat4Rotation() {
+	public Mat4f rotationMatrix() {
 		return Mat4f.rotationMatrix(x, y, z);
 	}
 

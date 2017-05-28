@@ -35,7 +35,7 @@ public class ModelViewProjectionMatrix {
 		Vec3f myObjectPosInScene = Vec3f.of(3, 5, -2);
 
 		// Rotate around the same point as the model position
-		Mat4f rotationMatrix = myObjectPosInScene.mat4Rotation();
+		Mat4f rotationMatrix = myObjectPosInScene.rotationMatrix();
 
 		// 1,0,0,3 | 0,1,0,5 | 0,0,1,-2 | 0,0,0,1
 		// This matrix is used to move a model somewhere in the world. For

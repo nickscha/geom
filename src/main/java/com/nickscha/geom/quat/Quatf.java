@@ -15,7 +15,9 @@
  */
 package com.nickscha.geom.quat;
 
+import com.nickscha.geom.mat.Mat4f;
 import com.nickscha.geom.vec.Vec3f;
+import com.nickscha.geom.vec.Vec4f;
 
 /**
  * @author nickscha
@@ -289,16 +291,6 @@ public final class Quatf {
 		return new Vec3f(-1, 0, 0).rotate(this);
 	}
 
-	// public Mat4f toRotationMatrix() {
-	// Vec3f forward = new Vec3f(2.0f * (x * z - w * y), 2.0f * (y * z + w * x),
-	// 1.0f - 2.0f * (x * x + y * y));
-	// Vec3f up = new Vec3f(2.0f * (x * y + w * z), 1.0f - 2.0f * (x * x + z *
-	// z), 2.0f * (y * z - w * x));
-	// Vec3f right = new Vec3f(1.0f - 2.0f * (y * y + z * z), 2.0f * (x * y - w
-	// * z), 2.0f * (x * z + w * y));
-	// return new Mat4f().initRotation(forward, up, right);
-	// }
-
 	public float getX() {
 		return x;
 	}
@@ -314,7 +306,19 @@ public final class Quatf {
 	public float getW() {
 		return w;
 	}
-	
+
+	public Vec4f vec4() {
+		return new Vec4f(x, y, z, w);
+	}
+
+	public Mat4f rotationMatrix() {
+		Vec3f forward = new Vec3f(2.0f * (x * z - w * y), 2.0f * (y * z + w * x), 1.0f - 2.0f * (x * x + y * y));
+		Vec3f up = new Vec3f(2.0f * (x * y + w * z), 1.0f - 2.0f * (x * x + z * z), 2.0f * (y * z - w * x));
+		Vec3f right = new Vec3f(1.0f - 2.0f * (y * y + z * z), 2.0f * (x * y - w * z), 2.0f * (x * z + w * y));
+
+		return Mat4f.rotationMatrix(forward, up, right);
+	}
+
 	/**
 	 * Converts the vector to a byte array optimized for high performance
 	 * serialization.
