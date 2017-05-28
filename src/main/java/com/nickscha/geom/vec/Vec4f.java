@@ -1467,7 +1467,7 @@ public final class Vec4f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Translation() {
-		return Mat4f.initTranslationMatrix(x, y, z);
+		return Mat4f.translationMatrix(x, y, z);
 	}
 
 	/**
@@ -1477,7 +1477,7 @@ public final class Vec4f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Scale() {
-		return Mat4f.initScale(x, y, z);
+		return Mat4f.scaleMatrix(x, y, z);
 	}
 
 	/**
@@ -1487,7 +1487,7 @@ public final class Vec4f {
 	 * @return the new matrix
 	 */
 	public Mat4f mat4Rotation() {
-		return Mat4f.initRotationMatrix(x, y, z);
+		return Mat4f.rotationMatrix(x, y, z);
 	}
 
 	/**

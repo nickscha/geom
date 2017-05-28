@@ -51,7 +51,7 @@ public final class Mat4f {
 	/**
 	 * Represents an identity matrix
 	 */
-	public static final Mat4f IDENTITY = Mat4f.initIdentity();
+	public static final Mat4f IDENTITY = Mat4f.identity();
 
 	private final float[][] m;
 
@@ -83,7 +83,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initIdentity() {
+	public static Mat4f identity() {
 		final float[][] m = new float[GROUPS][FIELDS];
 
 		m[0][0] = 1;
@@ -94,7 +94,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initTranslationMatrix(float x, float y, float z) {
+	public static Mat4f translationMatrix(float x, float y, float z) {
 		final float[][] m = new float[GROUPS][FIELDS];
 
 		m[0][0] = 1;
@@ -108,7 +108,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initRotationMatrix(float x, float y, float z) {
+	public static Mat4f rotationMatrix(float x, float y, float z) {
 		Mat4f rx = new Mat4f();
 		Mat4f ry = new Mat4f();
 		Mat4f rz = new Mat4f();
@@ -148,11 +148,11 @@ public final class Mat4f {
 		return new Mat4f(rz.mul(ry.mul(rx)).getM());
 	}
 
-	public static Mat4f initScale(Vec3f scale) {
-		return initScale(scale.getX(), scale.getY(), scale.getZ());
+	public static Mat4f scaleMatrix(Vec3f scale) {
+		return scaleMatrix(scale.getX(), scale.getY(), scale.getZ());
 	}
 
-	public static Mat4f initScale(float x, float y, float z) {
+	public static Mat4f scaleMatrix(float x, float y, float z) {
 		final float[][] m = new float[GROUPS][FIELDS];
 
 		m[0][0] = x;
@@ -163,14 +163,14 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initModelMatrix(Vec3f position, float scale) {
-		Mat4f modelMatrix = Mat4f.initTranslationMatrix(position.getX(), position.getY(), position.getZ());
+	public static Mat4f modelMatrix(Vec3f position, float scale) {
+		Mat4f modelMatrix = Mat4f.translationMatrix(position.getX(), position.getY(), position.getZ());
 		modelMatrix.scale(Vec3f.of(scale));
 		return modelMatrix;
 	}
 
-	public static Mat4f initViewMatrix(Vec3f position, Mat4f rotationMatrix) {
-		Mat4f translation = Mat4f.initTranslationMatrix(position.getX(), position.getY(), position.getZ());
+	public static Mat4f viewMatrix(Vec3f position, Mat4f rotationMatrix) {
+		Mat4f translation = Mat4f.translationMatrix(position.getX(), position.getY(), position.getZ());
 		return rotationMatrix.mul(translation);
 	}
 
@@ -184,11 +184,11 @@ public final class Mat4f {
 	 * @return the projection (perspective) matrix for supplied parameters
 	 * @see #initPerspective(float, float, float, float)
 	 */
-	public static Mat4f initProjectionMatrix(float fov, float aspectRatio, float zNear, float zFar) {
-		return initPerspectiveMatrix(fov, aspectRatio, zNear, zFar);
+	public static Mat4f projectionMatrix(float fov, float aspectRatio, float zNear, float zFar) {
+		return perspectiveMatrix(fov, aspectRatio, zNear, zFar);
 	}
 
-	public static Mat4f initMvpMatrix(Mat4f modelMatrix, Mat4f viewMatrix, Mat4f projectionMatrix) {
+	public static Mat4f mvpMatrix(Mat4f modelMatrix, Mat4f viewMatrix, Mat4f projectionMatrix) {
 		return projectionMatrix.mul(viewMatrix).mul(modelMatrix);
 	}
 
@@ -201,9 +201,9 @@ public final class Mat4f {
 	 * @param zNear first distance to consider (clip object to near)
 	 * @param zFar last distance to ignore (clip object to far)
 	 * @return the perspective (projection) matrix for supplied parameters
-	 * @see #initProjectionMatrix(float, float, float, float)
+	 * @see #projectionMatrix(float, float, float, float)
 	 */
-	public static Mat4f initPerspectiveMatrix(float fov, float aspectRatio, float zNear, float zFar) {
+	public static Mat4f perspectiveMatrix(float fov, float aspectRatio, float zNear, float zFar) {
 		float tanHalfFOV = (float) Math.tan(fov / 2);
 		float zRange = zNear - zFar;
 
@@ -217,7 +217,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initOrthographicMatrix(float left, float right, float bottom, float top, float near,
+	public static Mat4f orthographicMatrix(float left, float right, float bottom, float top, float near,
 			float far) {
 		float width = right - left;
 		float height = top - bottom;
@@ -243,10 +243,10 @@ public final class Mat4f {
 
 		Vec3f u = f.cross(r);
 
-		return initRotation(f, u, r);
+		return rotationMatrix(f, u, r);
 	}
 
-	public static Mat4f initRotation(Vec3f forward, Vec3f up, Vec3f right) {
+	public static Mat4f rotationMatrix(Vec3f forward, Vec3f up, Vec3f right) {
 		Vec3f f = forward;
 		Vec3f r = right;
 		Vec3f u = up;
@@ -266,7 +266,7 @@ public final class Mat4f {
 		return new Mat4f(m);
 	}
 
-	public static Mat4f initLookAtMatrix(Vec3f eye, Vec3f target, Vec3f up) {
+	public static Mat4f lookAtMatrix(Vec3f eye, Vec3f target, Vec3f up) {
 		Vec3f f = target.sub(eye).normalize();
 		Vec3f s = f.cross(up).normalize();
 		Vec3f u = s.cross(f);

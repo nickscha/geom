@@ -30,7 +30,7 @@ public class Mat4fTest {
 
 	@Test
 	public void testMat4fIdentity() {
-		Mat4f mat4f = Mat4f.initIdentity();
+		Mat4f mat4f = Mat4f.identity();
 
 		Assert.assertTrue(mat4f.get(0, 0) == 1f);
 		Assert.assertTrue(mat4f.get(1, 1) == 1f);
@@ -40,7 +40,7 @@ public class Mat4fTest {
 
 	@Test
 	public void testMat4fTranslation() {
-		Mat4f mat4f = Mat4f.initTranslationMatrix(2, 2, 2);
+		Mat4f mat4f = Mat4f.translationMatrix(2, 2, 2);
 
 		Assert.assertTrue(mat4f.get(0, 0) == 1f);
 		Assert.assertTrue(mat4f.get(0, 3) == 2f);
@@ -53,7 +53,7 @@ public class Mat4fTest {
 
 	@Test
 	public void testMat4fScale() {
-		Mat4f mat4f = Mat4f.initScale(2, 2, 2);
+		Mat4f mat4f = Mat4f.scaleMatrix(2, 2, 2);
 
 		Assert.assertTrue(mat4f.get(0, 0) == 2f);
 		Assert.assertTrue(mat4f.get(1, 1) == 2f);
@@ -63,17 +63,17 @@ public class Mat4fTest {
 
 	@Test
 	public void testMat4fRotation() {
-		Mat4f mat4f = Mat4f.initRotationMatrix(2, 2, 2);
+		Mat4f mat4f = Mat4f.rotationMatrix(2, 2, 2);
 	}
 
 	@Test
 	public void testMat4fPerspective() {
-		Mat4f mat4f = Mat4f.initPerspectiveMatrix(90, 1, 5, 100);
+		Mat4f mat4f = Mat4f.perspectiveMatrix(90, 1, 5, 100);
 	}
 
 	@Test
 	public void testMat4fFrustum() {
-		Mat4f mat4f = Mat4f.initOrthographicMatrix(1, 1, 1, 1, 5, 100);
+		Mat4f mat4f = Mat4f.orthographicMatrix(1, 1, 1, 1, 5, 100);
 		new Mat4f().frustum(1, 1, 1, 1, 5, 100);
 		new Mat4f().frustumNonPost(1, 1, 1, 1, 5, 100);
 		new Mat4f().frustumRayDir(1, 2);
@@ -116,12 +116,12 @@ public class Mat4fTest {
 
 	@Test
 	public void testEquals() {
-		Assert.assertTrue(Mat4f.IDENTITY.equals(Mat4f.initIdentity()));
+		Assert.assertTrue(Mat4f.IDENTITY.equals(Mat4f.identity()));
 	}
 
 	@Test
 	public void testToString() {
-		String result = Mat4f.initIdentity().toString();
+		String result = Mat4f.identity().toString();
 
 		Assert.assertEquals("mat4f[(1.0/0.0/0.0/0.0),(0.0/1.0/0.0/0.0),(0.0/0.0/1.0/0.0),(0.0/0.0/0.0/1.0)]", result);
 	}

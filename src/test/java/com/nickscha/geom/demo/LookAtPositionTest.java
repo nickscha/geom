@@ -34,6 +34,6 @@ public class LookAtPositionTest {
 		Vec3f camera = Vec3f.of(0, 5, 5);
 		Vec3f modelToLookAtCamera = Vec3f.of(7, 7, 7);
 
-		Mat4f.initLookAtMatrix(camera, modelToLookAtCamera, Vec3f.of(0, 1, 0));
+		Mat4f.lookAtMatrix(camera, modelToLookAtCamera, Vec3f.of(0, 1, 0));
 	}
 }
