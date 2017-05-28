@@ -38,6 +38,9 @@ public final class Quatf {
 	 */
 	public static final byte BYTES = 16;
 
+	/**
+	 * Quaternion as an identity Quaternion 
+	 */
 	public static final Quatf IDENTITY = new Quatf(0, 0, 0, 1);
 
 	private final float x, y, z, w;
