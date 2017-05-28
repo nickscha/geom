@@ -496,6 +496,18 @@ public final class Mat4f {
 		return res;
 	}
 
+	public Mat4f div(Mat4f r) {
+		final Mat4f res = new Mat4f();
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				res.m[i][j] = m[i][0] / r.get(0, j) + m[i][1] / r.get(1, j) + m[i][2] / r.get(2, j)
+						+ m[i][3] / r.get(3, j);
+			}
+		}
+
+		return res;
+	}
+
 	public Mat4f scale(Vec3f vec) {
 		final Mat4f res = new Mat4f();
 		res.m[0][0] = m[0][0] * vec.getX();
@@ -510,18 +522,6 @@ public final class Mat4f {
 		res.m[2][1] = m[2][1] * vec.getZ();
 		res.m[2][2] = m[2][2] * vec.getZ();
 		res.m[2][3] = m[2][3] * vec.getZ();
-		return res;
-	}
-
-	public Mat4f div(Mat4f r) {
-		final Mat4f res = new Mat4f();
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				res.m[i][j] = m[i][0] / r.get(0, j) + m[i][1] / r.get(1, j) + m[i][2] / r.get(2, j)
-						+ m[i][3] / r.get(3, j);
-			}
-		}
-
 		return res;
 	}
 
