@@ -461,8 +461,8 @@ public final class Mat4f {
 
 	public Mat4f add(Mat4f r) {
 		final Mat4f res = new Mat4f();
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
+		for (int i = 0; i < GROUPS; i++) {
+			for (int j = 0; j < FIELDS; j++) {
 				res.m[i][j] = m[i][0] + r.get(0, j) + m[i][1] + r.get(1, j) + m[i][2] + r.get(2, j) + m[i][3]
 						+ r.get(3, j);
 			}
@@ -473,8 +473,8 @@ public final class Mat4f {
 
 	public Mat4f sub(Mat4f r) {
 		final Mat4f res = new Mat4f();
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
+		for (int i = 0; i < GROUPS; i++) {
+			for (int j = 0; j < FIELDS; j++) {
 				res.m[i][j] = m[i][0] - r.get(0, j) + m[i][1] - r.get(1, j) + m[i][2] - r.get(2, j) + m[i][3]
 						- r.get(3, j);
 			}
@@ -485,8 +485,8 @@ public final class Mat4f {
 
 	public Mat4f mul(Mat4f r) {
 		final Mat4f res = new Mat4f();
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
+		for (int i = 0; i < GROUPS; i++) {
+			for (int j = 0; j < FIELDS; j++) {
 				res.m[i][j] = m[i][0] * r.get(0, j) + m[i][1] * r.get(1, j) + m[i][2] * r.get(2, j)
 						+ m[i][3] * r.get(3, j);
 			}
@@ -497,8 +497,8 @@ public final class Mat4f {
 
 	public Mat4f div(Mat4f r) {
 		final Mat4f res = new Mat4f();
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
+		for (int i = 0; i < GROUPS; i++) {
+			for (int j = 0; j < FIELDS; j++) {
 				res.m[i][j] = m[i][0] / r.get(0, j) + m[i][1] / r.get(1, j) + m[i][2] / r.get(2, j)
 						+ m[i][3] / r.get(3, j);
 			}

@@ -21,6 +21,7 @@ import org.junit.Test;
 import com.nickscha.geom.quat.Quat;
 import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec3f;
+import com.nickscha.geom.vec.Vec4f;
 
 /**
  * @author nickscha
@@ -80,6 +81,7 @@ public class QuatfTest {
 	@Test
 	public void testIsZero() {
 		Assert.assertTrue(Quatf.of(0, 0, 0, 0).isZero());
+		Assert.assertFalse(Quatf.of(1, 1, 1, 1).isZero());
 	}
 
 	@Test
@@ -90,6 +92,12 @@ public class QuatfTest {
 	@Test
 	public void testConjugate() {
 		Assert.assertEquals(Quatf.of(-1, -1, -1, 1), Quatf.of(1, 1, 1, 1).conjugate());
+	}
+
+	@Test
+	public void testDot() {
+		float result = Quatf.of(1, 2, 3, 4).dot(Quatf.of(2));
+		Assert.assertTrue(result == 20f);
 	}
 
 	@Test
@@ -156,12 +164,18 @@ public class QuatfTest {
 	public void testGetW() {
 		Assert.assertTrue(Quat.of(1, 1, 1, 1).getW() == 1f);
 	}
-	
+
 	@Test
-	public void testHashcode(){
+	public void testVec4() {
+		Vec4f result = Quatf.of(1, 2, 3, 4).vec4();
+		Assert.assertEquals(Vec4f.of(1, 2, 3, 4), result);
+	}
+
+	@Test
+	public void testHashcode() {
 		int result = Quatf.of(1, 1, 1, 1).hashCode();
 	}
-	
+
 	@Test
 	public void testToBytes() {
 		Quatf first = Quatf.of(1, 2, 3, 4);

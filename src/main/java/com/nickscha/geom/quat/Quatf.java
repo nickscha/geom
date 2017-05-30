@@ -20,6 +20,8 @@ import com.nickscha.geom.vec.Vec3f;
 import com.nickscha.geom.vec.Vec4f;
 
 /**
+ * Quaternions are used to represent an orientation in 3D space. 
+ * 
  * @author nickscha
  * @since 0.0.1
  * @version 0.0.1

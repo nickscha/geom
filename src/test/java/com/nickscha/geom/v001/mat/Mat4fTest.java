@@ -29,6 +29,25 @@ import com.nickscha.geom.mat.Mat4f;
 public class Mat4fTest {
 
 	@Test
+	public void testIdentity() {
+		Mat4f result = Mat4f.IDENTITY;
+		Assert.assertTrue(result.get(0, 0) == 1f);
+		Assert.assertTrue(result.get(1, 1) == 1f);
+		Assert.assertTrue(result.get(2, 2) == 1f);
+		Assert.assertTrue(result.get(3, 3) == 1f);
+	}
+
+	@Test
+	public void testInit() {
+		Mat4f result = Mat4f.of(2);
+		for (int i = 0; i < Mat4f.GROUPS; i++) {
+			for (int j = 0; j < Mat4f.FIELDS; j++) {
+				Assert.assertTrue(result.get(i, j) == 2f);
+			}
+		}
+	}
+
+	@Test
 	public void testMat4fIdentity() {
 		Mat4f mat4f = Mat4f.identity();
 
