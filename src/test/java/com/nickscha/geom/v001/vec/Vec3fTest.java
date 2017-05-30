@@ -19,6 +19,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.nickscha.geom.mat.Mat4f;
+import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec;
 import com.nickscha.geom.vec.Vec2f;
 import com.nickscha.geom.vec.Vec3f;
@@ -409,12 +410,12 @@ public class Vec3fTest {
 		Assert.assertEquals(Vec3f.of(1.5f, 1.5f, 1.5f), start.lerp(end, 0.75f));
 		Assert.assertEquals(Vec3f.of(2.0f, 2.0f, 2.0f), start.lerp(end, 1.00f));
 	}
-	
+
 	@Test
-	public void testScreenSpace(){
+	public void testScreenSpace() {
 		Mat4f viewMatrix = new Mat4f();
 		Mat4f projectionMatrix = new Mat4f();
-		
+
 		Vec3f anObjectInScene = Vec3f.of(5, 3, -5);
 		Vec2f screenSpace = anObjectInScene.screenSpace(viewMatrix, projectionMatrix);
 	}
@@ -454,22 +455,22 @@ public class Vec3fTest {
 		Vec2f result = first.zy();
 		Assert.assertEquals(Vec2f.of(2, 4), result);
 	}
-	
+
 	@Test
-	public void testVec2(){
-		Vec3f one = Vec3f.of(1,2,3);
+	public void testVec2() {
+		Vec3f one = Vec3f.of(1, 2, 3);
 		Vec2f result = one.vec2();
-		
+
 		Assert.assertEquals(Vec2f.of(1, 2), result);
 	}
-	
+
 	@Test
-	public void testVec4(){
-		Vec3f one = Vec3f.of(1,2,3);
-		
+	public void testVec4() {
+		Vec3f one = Vec3f.of(1, 2, 3);
+
 		Vec4f result = one.vec4();
 		Assert.assertEquals(Vec4f.of(1, 2, 3, 0), result);
-		
+
 		result = one.vec4(1);
 		Assert.assertEquals(Vec4f.of(1, 2, 3, 1), result);
 	}
@@ -490,6 +491,15 @@ public class Vec3fTest {
 	public void testGetZ() {
 		float result = first.getZ();
 		Assert.assertEquals(2, result, 0);
+	}
+
+	@Test
+	public void testQuat() {
+		Quatf result = Vec3f.of(1, 2, 3).quat();
+		Assert.assertEquals(Quatf.of(1, 2, 3, 0), result);
+
+		result = Vec3f.of(1, 2, 3).quat(1);
+		Assert.assertEquals(Quatf.of(1, 2, 3, 1), result);
 	}
 
 	@Test
