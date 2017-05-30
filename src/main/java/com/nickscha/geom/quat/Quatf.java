@@ -20,7 +20,8 @@ import com.nickscha.geom.vec.Vec3f;
 import com.nickscha.geom.vec.Vec4f;
 
 /**
- * Quaternions are used to represent an orientation in 3D space. 
+ * Quaternions are used to represent an orientation and rotation in 3D space.
+ * They extend a rotation in three dimensions to a four dimensional one.
  * 
  * @author nickscha
  * @since 0.0.1
@@ -41,12 +42,19 @@ public final class Quatf {
 	public static final byte BYTES = 16;
 
 	/**
-	 * Quaternion as an identity Quaternion 
+	 * Quaternion as an identity Quaternion
 	 */
 	public static final Quatf IDENTITY = new Quatf(0, 0, 0, 1);
 
 	private final float x, y, z, w;
 
+	/**
+	 * 
+	 * @param x the x value of the quaternion.
+	 * @param y the y value of the quaternion.
+	 * @param z the z value of the quaternion.
+	 * @param w the w value of the quaternion.
+	 */
 	public Quatf(float x, float y, float z, float w) {
 		this.x = x;
 		this.y = y;
@@ -131,6 +139,13 @@ public final class Quatf {
 	 */
 	public boolean isZero() {
 		return x == 0 && y == 0 && z == 0 && w == 0;
+	}
+
+	/**
+	 * @return true if this quaternion is an identity instance
+	 */
+	public boolean isIdentity() {
+		return (x == 0 && y == 0 && z == 0 && w == 1);
 	}
 
 	public Quatf normalize() {

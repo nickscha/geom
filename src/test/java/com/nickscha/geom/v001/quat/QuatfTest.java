@@ -85,6 +85,12 @@ public class QuatfTest {
 	}
 
 	@Test
+	public void testIsIdentity() {
+		Assert.assertTrue(Quatf.of(0, 0, 0, 1).isIdentity());
+		Assert.assertFalse(Quatf.of(1, 1, 1, 0).isIdentity());
+	}
+
+	@Test
 	public void testNegate() {
 		Assert.assertEquals(Quatf.of(-1, -1, -1, -1), Quatf.of(1, 1, 1, 1).negate());
 	}
