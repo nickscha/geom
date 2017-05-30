@@ -19,6 +19,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.nickscha.geom.mat.Mat4f;
+import com.nickscha.geom.vec.Vec3f;
 
 /**
  * @author nickscha
@@ -78,6 +79,13 @@ public class Mat4fTest {
 		Assert.assertTrue(mat4f.get(1, 1) == 2f);
 		Assert.assertTrue(mat4f.get(2, 2) == 2f);
 		Assert.assertTrue(mat4f.get(3, 3) == 1f);
+
+		mat4f = Mat4f.scaleMatrix(Vec3f.of(2, 2, 2));
+
+		Assert.assertTrue(mat4f.get(0, 0) == 2f);
+		Assert.assertTrue(mat4f.get(1, 1) == 2f);
+		Assert.assertTrue(mat4f.get(2, 2) == 2f);
+		Assert.assertTrue(mat4f.get(3, 3) == 1f);
 	}
 
 	@Test
@@ -131,6 +139,11 @@ public class Mat4fTest {
 
 		Assert.assertNotNull(fromBytes);
 		Assert.assertEquals(first, fromBytes);
+	}
+	
+	@Test
+	public void testHashCode(){
+		Mat4f.IDENTITY.hashCode();
 	}
 
 	@Test

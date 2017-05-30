@@ -19,6 +19,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.nickscha.geom.mat.Mat4f;
+import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec;
 import com.nickscha.geom.vec.Vec2f;
 import com.nickscha.geom.vec.Vec3f;
@@ -951,6 +952,15 @@ public class Vec4fTest {
 	public void testGetW() {
 		float result = first.getW();
 		Assert.assertEquals(2, result, 0);
+	}
+
+	@Test
+	public void testQuat() {
+		Quatf result = Vec4f.of(1, 2, 3, 4).quat();
+		Assert.assertEquals(Quatf.of(1, 2, 3, 4), result);
+
+		result = Vec4f.of(1, 2, 3, 5).quat(1);
+		Assert.assertEquals(Quatf.of(1, 2, 3, 1), result);
 	}
 
 	@Test
