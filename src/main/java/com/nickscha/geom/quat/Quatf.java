@@ -173,7 +173,7 @@ public final class Quatf {
 	// correctedDest = new Quatf(-dest.getX(), -dest.getY(), -dest.getZ(),
 	// -dest.getW());
 	// }
-	//
+	// 
 	// return correctedDest.sub(this).mul(lerpFactor).add(this);
 	// }
 	//
