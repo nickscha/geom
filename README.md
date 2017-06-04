@@ -19,11 +19,11 @@ A lightweight but powerful geometry libary with productive readiness API and flu
 
 Class names are aligned with GLSL names.
 
-| Type          | Components                 |
-| ------------- | -------------------------: |
-| Vectors       | Vec1f, Vec2f, Vec3f, Vec4f |
-| Matrices      |               Mat3f, Mat4f |
-| Quaternions   |                      Quatf |
+| Type          | Components                 | Status                                                           |
+| ------------- | -------------------------: | ---------------------------------------------------------------- |
+| Vectors       | Vec1f, Vec2f, Vec3f, Vec4f | ![Progress](https://img.shields.io/badge/progress-80-green.svg)  |
+| Matrices      |               Mat3f, Mat4f | ![Progress](https://img.shields.io/badge/progress-40-orange.svg) |
+| Quaternions   |                      Quatf | ![Progress](https://img.shields.io/badge/progress-10-orange.svg) |
 
 ## Requirements
 
