@@ -18,7 +18,6 @@ package com.nickscha.geom.v001.vec;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.nickscha.geom.vec.Vec;
 import com.nickscha.geom.vec.Vec1f;
 
 /**
@@ -29,8 +28,8 @@ import com.nickscha.geom.vec.Vec1f;
  */
 public class Vec1fTest {
 
-	Vec1f first = Vec.of(6);
-	Vec1f second = Vec.of(4);
+	Vec1f first = Vec1f.of(6);
+	Vec1f second = Vec1f.of(4);
 
 	@Test
 	public void testInit() {

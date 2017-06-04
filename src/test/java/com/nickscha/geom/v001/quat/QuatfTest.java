@@ -18,7 +18,6 @@ package com.nickscha.geom.v001.quat;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.nickscha.geom.quat.Quat;
 import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec3f;
 import com.nickscha.geom.vec.Vec4f;
@@ -108,7 +107,7 @@ public class QuatfTest {
 
 	@Test
 	public void testAdd() {
-		Assert.assertEquals(Quatf.of(2, 2, 2, 2), Quatf.of(1, 1, 1, 1).add(Quat.of(1, 1, 1, 1)));
+		Assert.assertEquals(Quatf.of(2, 2, 2, 2), Quatf.of(1, 1, 1, 1).add(Quatf.of(1, 1, 1, 1)));
 	}
 
 	@Test
@@ -118,7 +117,7 @@ public class QuatfTest {
 
 	@Test
 	public void testSub() {
-		Assert.assertEquals(Quatf.of(0, 0, 0, 0), Quatf.of(1, 1, 1, 1).sub(Quat.of(1, 1, 1, 1)));
+		Assert.assertEquals(Quatf.of(0, 0, 0, 0), Quatf.of(1, 1, 1, 1).sub(Quatf.of(1, 1, 1, 1)));
 	}
 
 	@Test
@@ -128,7 +127,7 @@ public class QuatfTest {
 
 	@Test
 	public void testMul() {
-		Assert.assertEquals(Quatf.of(2, 2, 2, -2), Quatf.of(1, 1, 1, 1).mul(Quat.of(1, 1, 1, 1)));
+		Assert.assertEquals(Quatf.of(2, 2, 2, -2), Quatf.of(1, 1, 1, 1).mul(Quatf.of(1, 1, 1, 1)));
 	}
 
 	@Test
@@ -143,7 +142,7 @@ public class QuatfTest {
 
 	@Test
 	public void testDiv() {
-		Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 1).div(Quat.of(1, 1, 1, 1)));
+		Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 1).div(Quatf.of(1, 1, 1, 1)));
 	}
 
 	@Test
@@ -153,22 +152,22 @@ public class QuatfTest {
 
 	@Test
 	public void testGetX() {
-		Assert.assertTrue(Quat.of(1, 1, 1, 1).getX() == 1f);
+		Assert.assertTrue(Quatf.of(1, 1, 1, 1).getX() == 1f);
 	}
 
 	@Test
 	public void testGetY() {
-		Assert.assertTrue(Quat.of(1, 1, 1, 1).getY() == 1f);
+		Assert.assertTrue(Quatf.of(1, 1, 1, 1).getY() == 1f);
 	}
 
 	@Test
 	public void testGetZ() {
-		Assert.assertTrue(Quat.of(1, 1, 1, 1).getZ() == 1f);
+		Assert.assertTrue(Quatf.of(1, 1, 1, 1).getZ() == 1f);
 	}
 
 	@Test
 	public void testGetW() {
-		Assert.assertTrue(Quat.of(1, 1, 1, 1).getW() == 1f);
+		Assert.assertTrue(Quatf.of(1, 1, 1, 1).getW() == 1f);
 	}
 
 	@Test

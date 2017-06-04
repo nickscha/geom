@@ -20,7 +20,6 @@ import org.junit.Test;
 
 import com.nickscha.geom.mat.Mat4f;
 import com.nickscha.geom.quat.Quatf;
-import com.nickscha.geom.vec.Vec;
 import com.nickscha.geom.vec.Vec2f;
 import com.nickscha.geom.vec.Vec3f;
 import com.nickscha.geom.vec.Vec4f;
@@ -33,8 +32,8 @@ import com.nickscha.geom.vec.Vec4f;
  */
 public class Vec3fTest {
 
-	Vec3f first = Vec.of(6, 4, 2);
-	Vec3f second = Vec.of(4, 2, 1);
+	Vec3f first = Vec3f.of(6, 4, 2);
+	Vec3f second = Vec3f.of(4, 2, 1);
 
 	@Test
 	public void testInit() {

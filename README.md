@@ -17,13 +17,13 @@ A lightweight but powerful geometry libary with productive readiness API and flu
 
 ## Supported Types
 
-Class names are aligned with GLSL names. Delegate classes providing factory methods to components.
+Class names are aligned with GLSL names.
 
-| Type          | Delegate | Components                 |
-| ------------- | :------- | -------------------------: |
-| Vectors       | Vec      | Vec1f, Vec2f, Vec3f, Vec4f |
-| Matrices      | Mat      |               Mat3f, Mat4f |
-| Quaternions   | Quat     |                      Quatf |
+| Type          | Components                 |
+| ------------- | -------------------------: |
+| Vectors       | Vec1f, Vec2f, Vec3f, Vec4f |
+| Matrices      |               Mat3f, Mat4f |
+| Quaternions   |                      Quatf |
 
 ## Requirements
 
