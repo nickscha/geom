@@ -5,15 +5,7 @@
 ![Size](https://reposs.herokuapp.com/?path=nickscha/geom)
 ![License](https://img.shields.io/hexpm/l/plug.svg)
 
-A lightweight but powerful geometry libary with productive readiness API and fluent usages.
-
-## What is in for you ?
-
-* Fluent, easy to use api with a fast learning curve
-* Rich documentation, use cases, tutorials
-* Consistent function structure
-* Full set of geometry types, as you would see them in shader languages such as GLSL (OpenGL Shader Language)
-
+A lightweight geometry API.
 
 ## Supported Types
 
@@ -41,10 +33,3 @@ Vec3f two = Vec3f.of(-1, -1, -1);
 Vec3f normalized = one.cross(two).normalize(); // Result is 0,0,0
 ```
 
-## Motivation
-
-There are other geom libaries already available but they have either
-* a small set of supported types
-* inconsistent structures (In some you'll find immutable methods next to mutable ones with the same function. Now that ain't pretty and helpful)
-
-That why I've created this project with the aim of tackling both issues by having a comprehensive set of functions with a nice consistent api.

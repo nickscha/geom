@@ -72,47 +72,44 @@ public final class Quatf {
 		this.w = cosHalfAngle;
 	}
 
-	// public Quatf(Mat4f rot) {
-	// float trace = rot.get(0, 0) + rot.get(1, 1) + rot.get(2, 2);
-	// float x_, y_, z_, w_;
-	//
-	// if (trace > 0) {
-	// float s = 0.5f / (float) Math.sqrt(trace + 1.0f);
-	// w_ = 0.25f / s;
-	// x_ = (rot.get(1, 2) - rot.get(2, 1)) * s;
-	// y_ = (rot.get(2, 0) - rot.get(0, 2)) * s;
-	// z_ = (rot.get(0, 1) - rot.get(1, 0)) * s;
-	// } else {
-	// if (rot.get(0, 0) > rot.get(1, 1) && rot.get(0, 0) > rot.get(2, 2)) {
-	// float s = 2.0f * (float) Math.sqrt(1.0f + rot.get(0, 0) - rot.get(1, 1) -
-	// rot.get(2, 2));
-	// w_ = (rot.get(1, 2) - rot.get(2, 1)) / s;
-	// x_ = 0.25f * s;
-	// y_ = (rot.get(1, 0) + rot.get(0, 1)) / s;
-	// z_ = (rot.get(2, 0) + rot.get(0, 2)) / s;
-	// } else if (rot.get(1, 1) > rot.get(2, 2)) {
-	// float s = 2.0f * (float) Math.sqrt(1.0f + rot.get(1, 1) - rot.get(0, 0) -
-	// rot.get(2, 2));
-	// w_ = (rot.get(2, 0) - rot.get(0, 2)) / s;
-	// x_ = (rot.get(1, 0) + rot.get(0, 1)) / s;
-	// y_ = 0.25f * s;
-	// z_ = (rot.get(2, 1) + rot.get(1, 2)) / s;
-	// } else {
-	// float s = 2.0f * (float) Math.sqrt(1.0f + rot.get(2, 2) - rot.get(0, 0) -
-	// rot.get(1, 1));
-	// w_ = (rot.get(0, 1) - rot.get(1, 0)) / s;
-	// x_ = (rot.get(2, 0) + rot.get(0, 2)) / s;
-	// y_ = (rot.get(1, 2) + rot.get(2, 1)) / s;
-	// z_ = 0.25f * s;
-	// }
-	// }
-	//
-	// float length = (float) Math.sqrt(x_ * x_ + y_ * y_ + z_ * z_ + w_ * w_);
-	// this.x = x_ / length;
-	// this.y = y_ / length;
-	// this.z = z_ / length;
-	// this.w = w_ / length;
-	// }
+	public Quatf(Mat4f rot) {
+		float trace = rot.get(0, 0) + rot.get(1, 1) + rot.get(2, 2);
+		float x_, y_, z_, w_;
+
+		if (trace > 0) {
+			float s = 0.5f / (float) Math.sqrt(trace + 1.0f);
+			w_ = 0.25f / s;
+			x_ = (rot.get(1, 2) - rot.get(2, 1)) * s;
+			y_ = (rot.get(2, 0) - rot.get(0, 2)) * s;
+			z_ = (rot.get(0, 1) - rot.get(1, 0)) * s;
+		} else {
+			if (rot.get(0, 0) > rot.get(1, 1) && rot.get(0, 0) > rot.get(2, 2)) {
+				float s = 2.0f * (float) Math.sqrt(1.0f + rot.get(0, 0) - rot.get(1, 1) - rot.get(2, 2));
+				w_ = (rot.get(1, 2) - rot.get(2, 1)) / s;
+				x_ = 0.25f * s;
+				y_ = (rot.get(1, 0) + rot.get(0, 1)) / s;
+				z_ = (rot.get(2, 0) + rot.get(0, 2)) / s;
+			} else if (rot.get(1, 1) > rot.get(2, 2)) {
+				float s = 2.0f * (float) Math.sqrt(1.0f + rot.get(1, 1) - rot.get(0, 0) - rot.get(2, 2));
+				w_ = (rot.get(2, 0) - rot.get(0, 2)) / s;
+				x_ = (rot.get(1, 0) + rot.get(0, 1)) / s;
+				y_ = 0.25f * s;
+				z_ = (rot.get(2, 1) + rot.get(1, 2)) / s;
+			} else {
+				float s = 2.0f * (float) Math.sqrt(1.0f + rot.get(2, 2) - rot.get(0, 0) - rot.get(1, 1));
+				w_ = (rot.get(0, 1) - rot.get(1, 0)) / s;
+				x_ = (rot.get(2, 0) + rot.get(0, 2)) / s;
+				y_ = (rot.get(1, 2) + rot.get(2, 1)) / s;
+				z_ = 0.25f * s;
+			}
+		}
+
+		float length = (float) Math.sqrt(x_ * x_ + y_ * y_ + z_ * z_ + w_ * w_);
+		this.x = x_ / length;
+		this.y = y_ / length;
+		this.z = z_ / length;
+		this.w = w_ / length;
+	}
 
 	public static Quatf of(float amt) {
 		return new Quatf(amt, amt, amt, amt);
@@ -173,7 +170,7 @@ public final class Quatf {
 	// correctedDest = new Quatf(-dest.getX(), -dest.getY(), -dest.getZ(),
 	// -dest.getW());
 	// }
-	// 
+	//
 	// return correctedDest.sub(this).mul(lerpFactor).add(this);
 	// }
 	//

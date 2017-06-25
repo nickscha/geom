@@ -182,6 +182,10 @@ public final class Vec3f {
 		return new Vec3f(x, y, z);
 	}
 
+	public static Vec3f of(Vec3f other) {
+		return new Vec3f(other.getX(), other.getY(), other.getZ());
+	}
+
 	/**
 	 * Calculates the regular length or magnitude of this vector.
 	 *
@@ -610,8 +614,8 @@ public final class Vec3f {
 	 *
 	 * We must take care when calculating the normalized vector because zero
 	 * length vectors cannot be normalized. Normalizing a zero-length vector
-	 * will usually result in a "divide-by-zero" error. Usually we resolve
-	 * this by performing the normalization in multiple steps:
+	 * will usually result in a "divide-by-zero" error. Usually we resolve this
+	 * by performing the normalization in multiple steps:
 	 *
 	 * <ul>
 	 * <li>Calculate the length squared of the vector (only calculate the
@@ -766,9 +770,9 @@ public final class Vec3f {
 	 * @param projectionMatrix
 	 * @return the screen space position of this vector
 	 */
-	//TODO adjust matrix class
+	// TODO adjust matrix class
 	public Vec2f screenSpace(Mat4f viewMatrix, Mat4f projectionMatrix) {
-		Vec4f coords = vec4(1f);	
+		Vec4f coords = vec4(1f);
 		// Mat4f.transform(viewMatrix, coords, coords);
 		// Mat4f.transform(projectionMatrix, coords, coords);
 		if (coords.getW() <= 0) {
