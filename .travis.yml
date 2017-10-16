@@ -3,6 +3,7 @@ jdk:
   - oraclejdk8
   - oraclejdk9
   - openjdk8
+  - openjdk8
   
 sudo: false # faster builds
 
