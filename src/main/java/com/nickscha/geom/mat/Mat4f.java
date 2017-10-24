@@ -151,6 +151,10 @@ public final class Mat4f {
 	public static Mat4f mvpMatrix(Mat4f modelMatrix, Mat4f viewMatrix, Mat4f projectionMatrix) {
 		return projectionMatrix.mul(viewMatrix).mul(modelMatrix);
 	}
+	
+	public static Mat4f perspectiveMatrix(float fov, float width, float height, float zNear, float zFar) {
+	    return perspectiveMatrix(fov, width / height, zNear, zFar);
+	}
 
 	/**
 	 * 
