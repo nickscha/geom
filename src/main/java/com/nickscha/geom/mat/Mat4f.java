@@ -126,10 +126,16 @@ public final class Mat4f {
 
         return new Mat4f(m);
     }
+    
+    public static Mat4f modelMatrix(Vec3f position) {
+        return modelMatrix(position, 1.0f);
+    }
 
     public static Mat4f modelMatrix(Vec3f position, float scale) {
         Mat4f modelMatrix = Mat4f.translationMatrix(position.getX(), position.getY(), position.getZ());
-        modelMatrix.scale(Vec3f.of(scale));
+        if(scale != 1.0f) {
+            modelMatrix.scale(Vec3f.of(scale));
+        }
         return modelMatrix;
     }
 
