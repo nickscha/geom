@@ -18,6 +18,7 @@ package com.nickscha.geom.v001.quat;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.nickscha.geom.mat.Mat4f;
 import com.nickscha.geom.quat.Quatf;
 import com.nickscha.geom.vec.Vec3f;
 import com.nickscha.geom.vec.Vec4f;
@@ -30,194 +31,200 @@ import com.nickscha.geom.vec.Vec4f;
  */
 public class QuatfTest {
 
-	@Test
-	public void testInit() {
-		Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1));
-		Assert.assertEquals(Quatf.of(1), Quatf.of(1, 1, 1, 1));
-		Quatf.of(Vec3f.of(1, 0, 0), 90);
-	}
+    @Test
+    public void testInit() {
+        Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1));
+        Assert.assertEquals(Quatf.of(1), Quatf.of(1, 1, 1, 1));
+        Quatf.of(Vec3f.of(1, 0, 0), 90);
+    }
 
-	@Test
-	public void testLengthSquared() {
-		Assert.assertTrue(Quatf.of(1, 1, 1, 1).lengthSquared() == 4);
-	}
+    @Test
+    public void testInitRotation() {
+        Quatf res = Quatf.of(Mat4f.rotationMatrix(Vec3f.of(0, 0, 1), Vec3f.of(0, 1, 0)));
+        Assert.assertEquals(Quatf.of(0, 0, 0, 1), res);
+    }
 
-	@Test
-	public void testGetForward() {
-		System.out.println(Quatf.of(1, 1, 1, 0).getForward());
-	}
+    @Test
+    public void testLengthSquared() {
+        Assert.assertTrue(Quatf.of(1, 1, 1, 1).lengthSquared() == 4);
+    }
 
-	@Test
-	public void testGetBack() {
-		System.out.println(Quatf.of(1, 1, 1, 0).getBack());
-	}
+    @Test
+    public void testGetForward() {
+        System.out.println(Quatf.of(1, 1, 1, 0).getForward());
+    }
 
-	@Test
-	public void testGetUp() {
-		System.out.println(Quatf.of(1, 1, 1, 0).getUp());
-	}
+    @Test
+    public void testGetBack() {
+        System.out.println(Quatf.of(1, 1, 1, 0).getBack());
+    }
 
-	@Test
-	public void testGetDown() {
-		System.out.println(Quatf.of(1, 1, 1, 0).getDown());
-	}
+    @Test
+    public void testGetUp() {
+        System.out.println(Quatf.of(1, 1, 1, 0).getUp());
+    }
 
-	@Test
-	public void testGetLeft() {
-		System.out.println(Quatf.of(1, 1, 1, 0).getLeft());
-	}
+    @Test
+    public void testGetDown() {
+        System.out.println(Quatf.of(1, 1, 1, 0).getDown());
+    }
 
-	@Test
-	public void testGetRight() {
-		System.out.println(Quatf.of(1, 1, 1, 0).getRight());
-	}
+    @Test
+    public void testGetLeft() {
+        System.out.println(Quatf.of(1, 1, 1, 0).getLeft());
+    }
 
-	@Test
-	public void testLength() {
-		Assert.assertTrue(Quatf.of(1, 1, 1, 1).length() == 2);
-	}
+    @Test
+    public void testGetRight() {
+        System.out.println(Quatf.of(1, 1, 1, 0).getRight());
+    }
 
-	@Test
-	public void testIsZero() {
-		Assert.assertTrue(Quatf.of(0, 0, 0, 0).isZero());
-		Assert.assertFalse(Quatf.of(1, 1, 1, 1).isZero());
-	}
+    @Test
+    public void testLength() {
+        Assert.assertTrue(Quatf.of(1, 1, 1, 1).length() == 2);
+    }
 
-	@Test
-	public void testIsIdentity() {
-		Assert.assertTrue(Quatf.of(0, 0, 0, 1).isIdentity());
-		Assert.assertFalse(Quatf.of(1, 1, 1, 0).isIdentity());
-	}
+    @Test
+    public void testIsZero() {
+        Assert.assertTrue(Quatf.of(0, 0, 0, 0).isZero());
+        Assert.assertFalse(Quatf.of(1, 1, 1, 1).isZero());
+    }
 
-	@Test
-	public void testNegate() {
-		Assert.assertEquals(Quatf.of(-1, -1, -1, -1), Quatf.of(1, 1, 1, 1).negate());
-	}
+    @Test
+    public void testIsIdentity() {
+        Assert.assertTrue(Quatf.of(0, 0, 0, 1).isIdentity());
+        Assert.assertFalse(Quatf.of(1, 1, 1, 0).isIdentity());
+    }
 
-	@Test
-	public void testConjugate() {
-		Assert.assertEquals(Quatf.of(-1, -1, -1, 1), Quatf.of(1, 1, 1, 1).conjugate());
-	}
+    @Test
+    public void testNegate() {
+        Assert.assertEquals(Quatf.of(-1, -1, -1, -1), Quatf.of(1, 1, 1, 1).negate());
+    }
 
-	@Test
-	public void testDot() {
-		float result = Quatf.of(1, 2, 3, 4).dot(Quatf.of(2));
-		Assert.assertTrue(result == 20f);
-	}
+    @Test
+    public void testConjugate() {
+        Assert.assertEquals(Quatf.of(-1, -1, -1, 1), Quatf.of(1, 1, 1, 1).conjugate());
+    }
 
-	@Test
-	public void testAdd() {
-		Assert.assertEquals(Quatf.of(2, 2, 2, 2), Quatf.of(1, 1, 1, 1).add(Quatf.of(1, 1, 1, 1)));
-	}
+    @Test
+    public void testDot() {
+        float result = Quatf.of(1, 2, 3, 4).dot(Quatf.of(2));
+        Assert.assertTrue(result == 20f);
+    }
 
-	@Test
-	public void testAddAmt() {
-		Assert.assertEquals(Quatf.of(2, 2, 2, 2), Quatf.of(1, 1, 1, 1).add(1));
-	}
+    @Test
+    public void testAdd() {
+        Assert.assertEquals(Quatf.of(2, 2, 2, 2), Quatf.of(1, 1, 1, 1).add(Quatf.of(1, 1, 1, 1)));
+    }
 
-	@Test
-	public void testSub() {
-		Assert.assertEquals(Quatf.of(0, 0, 0, 0), Quatf.of(1, 1, 1, 1).sub(Quatf.of(1, 1, 1, 1)));
-	}
+    @Test
+    public void testAddAmt() {
+        Assert.assertEquals(Quatf.of(2, 2, 2, 2), Quatf.of(1, 1, 1, 1).add(1));
+    }
 
-	@Test
-	public void testSubAmt() {
-		Assert.assertEquals(Quatf.of(0, 0, 0, 0), Quatf.of(1, 1, 1, 1).sub(1));
-	}
+    @Test
+    public void testSub() {
+        Assert.assertEquals(Quatf.of(0, 0, 0, 0), Quatf.of(1, 1, 1, 1).sub(Quatf.of(1, 1, 1, 1)));
+    }
 
-	@Test
-	public void testMul() {
-		Assert.assertEquals(Quatf.of(2, 2, 2, -2), Quatf.of(1, 1, 1, 1).mul(Quatf.of(1, 1, 1, 1)));
-	}
+    @Test
+    public void testSubAmt() {
+        Assert.assertEquals(Quatf.of(0, 0, 0, 0), Quatf.of(1, 1, 1, 1).sub(1));
+    }
 
-	@Test
-	public void testMulAmt() {
-		Assert.assertEquals(Quatf.of(2, 2, 2, -2), Quatf.of(1, 1, 1, 1).mul(1));
-	}
+    @Test
+    public void testMul() {
+        Assert.assertEquals(Quatf.of(2, 2, 2, -2), Quatf.of(1, 1, 1, 1).mul(Quatf.of(1, 1, 1, 1)));
+    }
 
-	@Test
-	public void testMulVec3f() {
-		Assert.assertEquals(Quatf.of(1, 1, 1, -3), Quatf.of(1, 1, 1, 1).mul(Vec3f.of(1, 1, 1)));
-	}
+    @Test
+    public void testMulAmt() {
+        Assert.assertEquals(Quatf.of(2, 2, 2, -2), Quatf.of(1, 1, 1, 1).mul(1));
+    }
 
-	@Test
-	public void testDiv() {
-		Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 1).div(Quatf.of(1, 1, 1, 1)));
-	}
+    @Test
+    public void testMulVec3f() {
+        Assert.assertEquals(Quatf.of(1, 1, 1, -3), Quatf.of(1, 1, 1, 1).mul(Vec3f.of(1, 1, 1)));
+    }
 
-	@Test
-	public void testDivAmt() {
-		Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 1).div(1));
-	}
+    @Test
+    public void testDiv() {
+        Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 1).div(Quatf.of(1, 1, 1, 1)));
+    }
 
-	@Test
-	public void testGetX() {
-		Assert.assertTrue(Quatf.of(1, 1, 1, 1).getX() == 1f);
-	}
+    @Test
+    public void testDivAmt() {
+        Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 1).div(1));
+    }
 
-	@Test
-	public void testGetY() {
-		Assert.assertTrue(Quatf.of(1, 1, 1, 1).getY() == 1f);
-	}
+    @Test
+    public void testGetX() {
+        Assert.assertTrue(Quatf.of(1, 1, 1, 1).getX() == 1f);
+    }
 
-	@Test
-	public void testGetZ() {
-		Assert.assertTrue(Quatf.of(1, 1, 1, 1).getZ() == 1f);
-	}
+    @Test
+    public void testGetY() {
+        Assert.assertTrue(Quatf.of(1, 1, 1, 1).getY() == 1f);
+    }
 
-	@Test
-	public void testGetW() {
-		Assert.assertTrue(Quatf.of(1, 1, 1, 1).getW() == 1f);
-	}
+    @Test
+    public void testGetZ() {
+        Assert.assertTrue(Quatf.of(1, 1, 1, 1).getZ() == 1f);
+    }
 
-	@Test
-	public void testVec4() {
-		Vec4f result = Quatf.of(1, 2, 3, 4).vec4();
-		Assert.assertEquals(Vec4f.of(1, 2, 3, 4), result);
-	}
+    @Test
+    public void testGetW() {
+        Assert.assertTrue(Quatf.of(1, 1, 1, 1).getW() == 1f);
+    }
 
-	@Test
-	public void testHashcode() {
-		int result = Quatf.of(1, 1, 1, 1).hashCode();
-	}
+    @Test
+    public void testVec4() {
+        Vec4f result = Quatf.of(1, 2, 3, 4).vec4();
+        Assert.assertEquals(Vec4f.of(1, 2, 3, 4), result);
+    }
 
-	@Test
-	public void testToBytes() {
-		Quatf first = Quatf.of(1, 2, 3, 4);
-		byte[] bytes = first.toBytes();
-		Assert.assertTrue(bytes.length == Quatf.BYTES);
-	}
+    @Test
+    public void testHashcode() {
+        int result = Quatf.of(1, 1, 1, 1).hashCode();
+    }
 
-	@Test
-	public void testToBytesData() {
-		Quatf first = Quatf.of(1, 2, 3, 4);
-		byte[] data = new byte[Quatf.BYTES];
-		byte[] bytes = first.toBytes(data);
-		Assert.assertTrue(bytes.length == Quatf.BYTES);
-	}
+    @Test
+    public void testToBytes() {
+        Quatf first = Quatf.of(1, 2, 3, 4);
+        byte[] bytes = first.toBytes();
+        Assert.assertTrue(bytes.length == Quatf.BYTES);
+    }
 
-	@Test
-	public void testFromBytes() {
-		Quatf first = Quatf.of(1, 2, 3, 4);
-		byte[] bytes = first.toBytes();
-		Quatf fromBytes = Quatf.fromBytes(bytes);
+    @Test
+    public void testToBytesData() {
+        Quatf first = Quatf.of(1, 2, 3, 4);
+        byte[] data = new byte[Quatf.BYTES];
+        byte[] bytes = first.toBytes(data);
+        Assert.assertTrue(bytes.length == Quatf.BYTES);
+    }
 
-		Assert.assertNotNull(fromBytes);
-		Assert.assertEquals(first, fromBytes);
-	}
+    @Test
+    public void testFromBytes() {
+        Quatf first = Quatf.of(1, 2, 3, 4);
+        byte[] bytes = first.toBytes();
+        Quatf fromBytes = Quatf.fromBytes(bytes);
 
-	@Test
-	public void testEquals() {
-		Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 1));
-		Assert.assertNotEquals(Quatf.of(1, 1, 1, 1), Quatf.of(2, 1, 1, 1));
-		Assert.assertNotEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 2, 1, 1));
-		Assert.assertNotEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 2, 1));
-		Assert.assertNotEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 2));
-	}
+        Assert.assertNotNull(fromBytes);
+        Assert.assertEquals(first, fromBytes);
+    }
 
-	@Test
-	public void testToString() {
-		String result = Quatf.of(1, 1, 1, 1).toString();
-		Assert.assertEquals("quatf[x=1.0, y=1.0, z=1.0, w=1.0]", result);
-	}
+    @Test
+    public void testEquals() {
+        Assert.assertEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 1));
+        Assert.assertNotEquals(Quatf.of(1, 1, 1, 1), Quatf.of(2, 1, 1, 1));
+        Assert.assertNotEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 2, 1, 1));
+        Assert.assertNotEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 2, 1));
+        Assert.assertNotEquals(Quatf.of(1, 1, 1, 1), Quatf.of(1, 1, 1, 2));
+    }
+
+    @Test
+    public void testToString() {
+        String result = Quatf.of(1, 1, 1, 1).toString();
+        Assert.assertEquals("quatf[x=1.0, y=1.0, z=1.0, w=1.0]", result);
+    }
 }
