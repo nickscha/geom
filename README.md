@@ -1,11 +1,23 @@
-# geom - in development (~30kb jar)
+# geom
 
 ![Build Status](https://travis-ci.org/nickscha/geom.svg?branch=master)
 ![codecov.io](https://codecov.io/github/nickscha/geom/coverage.svg?branch=master)
 ![Size](https://reposs.herokuapp.com/?path=nickscha/geom)
 ![License](https://img.shields.io/hexpm/l/plug.svg)
 
-A lightweight geometry API.
+A lightweight geometry liberay with fluent API.
+
+## Maven
+```xml
+<dependency>
+  <groupId>com.github.nickscha</groupId>
+  <artifactId>geom</artifactId>
+  <version>0.0.1</version>
+</dependency>
+```
+
+The artifact is published under https://oss.sonatype.org
+
 
 ## Supported Types
 
