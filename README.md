@@ -2,7 +2,6 @@
 
 ![Build Status](https://travis-ci.org/nickscha/geom.svg?branch=master)
 ![codecov.io](https://codecov.io/github/nickscha/geom/coverage.svg?branch=master)
-![Size](https://reposs.herokuapp.com/?path=nickscha/geom)
 ![License](https://img.shields.io/hexpm/l/plug.svg)
 
 A lightweight geometry liberay with fluent API.
