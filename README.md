@@ -1,5 +1,6 @@
 # geom
 
+[![Maven](https://maven-badges.herokuapp.com/maven-central/com.github.nickscha/geom/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nickscha/geom)
 ![Build Status](https://travis-ci.org/nickscha/geom.svg?branch=master)
 ![codecov.io](https://codecov.io/github/nickscha/geom/coverage.svg?branch=master)
 ![License](https://img.shields.io/hexpm/l/plug.svg)
@@ -22,14 +23,14 @@ The artifact is published under https://oss.sonatype.org
 
 Class names are aligned with GLSL names.
 
-| Type          | Components                 | Status                                                           |
-| ------------- | -------------------------: | ---------------------------------------------------------------- |
-| Vectors       | Vec1f, Vec2f, Vec3f, Vec4f | ![Progress](https://img.shields.io/badge/progress-80-green.svg)  |
-|               | Vec1d, Vec2d, Vec3d, Vec4d | ![Progress](https://img.shields.io/badge/progress-0-red.svg)     |
-| Matrices      |               Mat3f, Mat4f | ![Progress](https://img.shields.io/badge/progress-40-orange.svg) |
-|               |               Mat3d, Mat4d | ![Progress](https://img.shields.io/badge/progress-0-red.svg)     |
-| Quaternions   |                      Quatf | ![Progress](https://img.shields.io/badge/progress-10-orange.svg) |
-|               |                      Quatd | ![Progress](https://img.shields.io/badge/progress-0-red.svg)     |
+| Type          | Components                 | Status    |
+| ------------- | -------------------------: | --------- |
+| Vectors       | Vec1f, Vec2f, Vec3f, Vec4f | 80%       |
+|               | Vec1d, Vec2d, Vec3d, Vec4d |  0%       |
+| Matrices      |               Mat3f, Mat4f | 40%       |
+|               |               Mat3d, Mat4d |  0%       |
+| Quaternions   |                      Quatf | 10%       |
+|               |                      Quatd |  0%       |
 
 ## Requirements
 
