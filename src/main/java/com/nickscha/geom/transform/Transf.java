@@ -28,7 +28,7 @@ import com.nickscha.geom.vec.Vec3f;
  * @version 0.0.1
  */
 public final class Transf {
-
+    
     private Transf parent;
     private Mat4f parentMatrix;
 
@@ -45,10 +45,10 @@ public final class Transf {
         rot = Quatf.of(0, 0, 0, 1);
         scale = Vec3f.of(1);
 
-        parentMatrix = Mat4f.IDENTITY;
+        parentMatrix = Mat4f.identity();
     }
 
-    public void update() {
+    public Transf update() {
         if (oldPos != null) {
             oldPos = Vec3f.of(pos);
             oldRot = Quatf.of(rot);
@@ -58,10 +58,12 @@ public final class Transf {
             oldRot = Quatf.of(rot).mul(0.5f);
             oldScale = Vec3f.of(scale).add(1.0f);
         }
+        return this;
     }
 
-    public void rotate(Vec3f axis, float angle) {
+    public Transf rotate(Vec3f axis, float angle) {
         rot = Quatf.of(axis, angle).mul(rot).normalize();
+        return this;
     }
 
     public boolean hasChanged() {
@@ -88,8 +90,9 @@ public final class Transf {
         return parentMatrix;
     }
 
-    public void setParent(Transf parent) {
+    public Transf setParent(Transf parent) {
         this.parent = parent;
+        return this;
     }
 
     public Vec3f getTransformedPos() {
@@ -110,23 +113,26 @@ public final class Transf {
         return pos;
     }
 
-    public void setPos(Vec3f position) {
+    public Transf setPos(Vec3f position) {
         this.pos = position;
+        return this;
     }
 
     public Quatf getRot() {
         return rot;
     }
 
-    public void setRot(Quatf rotation) {
+    public Transf setRot(Quatf rotation) {
         this.rot = rotation;
+        return this;
     }
 
     public Vec3f getScale() {
         return scale;
     }
 
-    public void setScale(Vec3f scale) {
+    public Transf setScale(Vec3f scale) {
         this.scale = scale;
+        return this;
     }
 }
