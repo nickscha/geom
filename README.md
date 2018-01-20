@@ -80,3 +80,9 @@ Vec3f two = Vec3f.of(-1, -1, -1);
 Vec3f normalized = one.cross(two).normalize(); // Result is 0,0,0
 ```
 
+### Swizzling types
+Geom provides swizzling for all types.
+```java
+Vec2f res = Vec3f.of(1, 2, 1).mul(2).xy();
+Mat4f res = Vec3f.of(6, 2, 1).scaleMatrix();
+```
