@@ -92,3 +92,10 @@ Geom provides swizzling for all types.
 Vec2f res = Vec3f.of(1, 2, 1).mul(2).xy();
 Mat4f res = Vec3f.of(6, 2, 1).scaleMatrix();
 ```
+
+### Serialization
+Geom provides a general purpose serialization for all types.
+```java
+byte[] data = Vec3f.of(1,2,3).toBytes();
+Vec3f res = Vec3f.fromBytes(data);
+```
