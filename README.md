@@ -31,12 +31,18 @@ Class names are aligned with GLSL names.
 |               |               Mat3d, Mat4d |  0%       |
 | Quaternions   |                      Quatf | 10%       |
 |               |                      Quatd |  0%       |
+| Transform     |             Transf, Transd |  0%       |
+
+## Roadmap version 0.0.2
+
+* Add cascading Transform (Transf) class for translating, scaling and rotating matrices based on their parent matrices.
+* Enhance Javadocs
 
 ## Requirements
 
 * Java 8 or later
 
-## Example
+## Examples
 
 For more examples have a look at the src/test/resources/demo directory.
 
