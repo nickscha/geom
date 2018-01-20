@@ -93,7 +93,7 @@ public final class Mat4f {
 
         return new Mat4f(m);
     }
-
+    
     public static Mat4f translationMatrix(float x, float y, float z) {
         final float[][] m = new float[GROUPS][FIELDS];
 

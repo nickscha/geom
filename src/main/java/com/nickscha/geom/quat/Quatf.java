@@ -118,6 +118,11 @@ public final class Quatf {
     public static Quatf of(Mat4f rotation) {
         return new Quatf(rotation);
     }
+    
+    public static Quatf of(Quatf other) {
+        return new Quatf(other.getX(), other.getY(), other.getZ(), other.getW());
+    }
+
 
     public static Quatf of(float x, float y, float z, float w) {
         return new Quatf(x, y, z, w);
