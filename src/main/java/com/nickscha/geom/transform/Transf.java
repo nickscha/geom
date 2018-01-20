@@ -21,14 +21,56 @@ import com.nickscha.geom.vec.Vec3f;
 
 /**
  * The Transform class allows cascading translation, rotation and scaling based
- * on the parent matrices, quaternions.
+ * on the parent matrices, quaternions. <br/>
+ * <b>Example:</b> <br/>
+ * Imagine two wheel objects in your 3d scene which should be relative to the
+ * position of the other wheel and the car chasis.
+ * 
+ * <pre>
+ *  Wheel 1    Wheel 2
+ *  +--+       +--+
+ *  |  |-------|  |
+ *  +--+       +--+
+ * </pre>
+ * 
+ * When the driver steers both wheels should change their rotation based on the
+ * amount of steering.
+ * 
+ * <pre>
+ *  Wheel 1    Wheel 2
+ *  +--+        +--+
+ *   \  \------- \  \
+ *    +--+        +--+
+ * </pre>
+ * 
+ * In addition image that both wheels are relative to the car chasis
+ * position/rotation. <br/>
+ * <p>
+ * This is where the Transform class comes in place because it is cascading
+ * rotation, translations, ... based on the parent "object".
+ * </p>
+ * <b>Pseudo Code</b>
+ * 
+ * <pre>
+ *   Model wheel1    = new Model("wheel1");
+ *   Model wheel2    = new Model("wheel2");
+ *   Model carChasis = new Model("carChasis");
+ *   
+ *   Tranformation carTrans = carChasis.getTransformation();
+ *   wheel1.getTransformation().setParent(carTrans); // bind wheel to car chasis
+ *   wheel2.getTransformation().setParent(carTrans); // bind wheel to car chasis
+ *   
+ *   carTrans.setRotation(...);
+ * </pre>
+ * 
+ *
  * 
  * @author nickscha
  * @since 0.0.2
  * @version 0.0.1
  */
 public final class Transf {
-    
+
     private Transf parent;
     private Mat4f parentMatrix;
 
