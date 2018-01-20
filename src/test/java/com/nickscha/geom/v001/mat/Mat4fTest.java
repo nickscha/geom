@@ -87,6 +87,32 @@ public class Mat4fTest {
 		Assert.assertTrue(mat4f.get(2, 2) == 2f);
 		Assert.assertTrue(mat4f.get(3, 3) == 1f);
 	}
+	
+	@Test
+	public void testScale() {
+	    Mat4f res = Mat4f.identity().scale(Vec3f.of(2, 2, 2));
+	    
+        float[][] expArr = new float[4][4];
+        expArr[0][0] = 2;
+        expArr[0][1] = 0;
+        expArr[0][2] = 0;
+        expArr[0][3] = 0;
+        expArr[1][0] = 0;
+        expArr[1][1] = 2;
+        expArr[1][2] = 0;
+        expArr[1][3] = 0;
+        expArr[2][0] = 0;
+        expArr[2][1] = 0;
+        expArr[2][2] = 2;
+        expArr[2][3] = 0;
+        expArr[3][0] = 0;
+        expArr[3][1] = 0;
+        expArr[3][2] = 0;
+        expArr[3][3] = 0;
+
+        Assert.assertEquals(Mat4f.of(expArr), res);
+
+	}
 
 	@Test
 	public void testMat4fRotation() {

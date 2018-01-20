@@ -39,9 +39,39 @@ public class QuatfTest {
     }
 
     @Test
+    public void testNormalize() {
+        Assert.assertEquals(Quatf.of(0.5f, 0.5f, 0.5f, 0.5f), Quatf.of(2, 2, 2, 2).normalize());
+    }
+
+    @Test
     public void testInitRotation() {
         Quatf res = Quatf.of(Mat4f.rotationMatrix(Vec3f.of(0, 0, 1), Vec3f.of(0, 1, 0)));
         Assert.assertEquals(Quatf.of(0, 0, 0, 1), res);
+    }
+
+    @Test
+    public void testRotationMatrix() {
+        Mat4f res = Quatf.of(1, 1, -2, 1).rotationMatrix();
+
+        float[][] expArr = new float[4][4];
+        expArr[0][0] = -9;
+        expArr[0][1] = 6;
+        expArr[0][2] = -2;
+        expArr[0][3] = 0;
+        expArr[1][0] = -2;
+        expArr[1][1] = -9;
+        expArr[1][2] = -6;
+        expArr[1][3] = 0;
+        expArr[2][0] = -6;
+        expArr[2][1] = -2;
+        expArr[2][2] = -3;
+        expArr[2][3] = 0;
+        expArr[3][0] = 0;
+        expArr[3][1] = 0;
+        expArr[3][2] = 0;
+        expArr[3][3] = 1;
+
+        Assert.assertEquals(Mat4f.of(expArr), res);
     }
 
     @Test
