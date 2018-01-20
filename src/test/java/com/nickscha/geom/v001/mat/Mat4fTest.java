@@ -111,7 +111,6 @@ public class Mat4fTest {
         expArr[3][3] = 0;
 
         Assert.assertEquals(Mat4f.of(expArr), res);
-
 	}
 
 	@Test
