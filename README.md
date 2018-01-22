@@ -1,6 +1,7 @@
 # geom
 
 [![Maven](https://maven-badges.herokuapp.com/maven-central/com.github.nickscha/geom/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nickscha/geom)
+[![javadoc](http://javadoc.io/badge/com.github.nickscha/geom.svg)](http://javadoc.io/doc/com.github.nickscha/geom)
 ![Build Status](https://travis-ci.org/nickscha/geom.svg?branch=master)
 ![codecov.io](https://codecov.io/github/nickscha/geom/coverage.svg?branch=master)
 ![License](https://img.shields.io/hexpm/l/plug.svg)
