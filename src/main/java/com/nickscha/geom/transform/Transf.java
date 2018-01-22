@@ -60,7 +60,7 @@ import com.nickscha.geom.vec.Vec3f;
  *   wheel1.getTransformation().setParent(carTrans); // bind wheel to car chasis
  *   wheel2.getTransformation().setParent(carTrans); // bind wheel to car chasis
  *   
- *   carTrans.setRotation(...);
+ *   carTrans.setRotation(...); // Apply your rotation matrix here
  * </pre>
  * 
  *
