@@ -36,6 +36,7 @@ Class names are aligned with GLSL names.
 
 ## Roadmap version 0.0.2
 
+* Add double types
 * Add cascading Transform (Transf) class for translating, scaling and rotating matrices based on their parent matrices.
 * Enhance Javadocs
 
