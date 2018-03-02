@@ -13,7 +13,7 @@ A lightweight geometry liberay with fluent API.
 <dependency>
   <groupId>com.github.nickscha</groupId>
   <artifactId>geom</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 </dependency>
 ```
 
@@ -34,9 +34,8 @@ Class names are aligned with GLSL names.
 |               |                      Quatd | 40%       |
 | Transform     |             Transf, Transd | 20%       |
 
-## Roadmap version 0.0.2
+## Roadmap version 0.0.3
 
-* Add double types
 * Add cascading Transform (Transf) class for translating, scaling and rotating matrices based on their parent matrices.
 * Enhance Javadocs
 
