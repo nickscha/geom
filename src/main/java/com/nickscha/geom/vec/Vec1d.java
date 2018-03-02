@@ -558,7 +558,7 @@ public final class Vec1d {
 	public Vec1d reflect(Vec1d normal) {
 		double dot = dot(normal);
 
-		double x_ = this.x - 2.0f * dot * normal.x;
+		double x_ = this.x - 2.0d * dot * normal.x;
 
 		return new Vec1d(x_);
 	}

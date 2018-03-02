@@ -15,7 +15,6 @@
  */
 package com.nickscha.geom.mat;
 
-import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 import com.nickscha.geom.vec.Vec3d;
@@ -344,12 +343,12 @@ public final class Mat4d {
         Mat4d res = new Mat4d();
 
         // calculate right matrix elements
-        double rm00 = 2.0f * zNear / (right - left);
-        double rm11 = 2.0f * zNear / (top - bottom);
+        double rm00 = 2.0d * zNear / (right - left);
+        double rm11 = 2.0d * zNear / (top - bottom);
         double rm20 = (right + left) / (right - left);
         double rm21 = (top + bottom) / (top - bottom);
         double rm22 = -(zFar + zNear) / (zFar - zNear);
-        double rm32 = -2.0f * zFar * zNear / (zFar - zNear);
+        double rm32 = -2.0d * zFar * zNear / (zFar - zNear);
         // perform optimized matrix multiplication
         double nm20 = m[0][0] * rm20 + m[1][0] * rm21 + m[2][0] * rm22 - m[3][0];
         double nm21 = m[0][1] * rm20 + m[1][1] * rm21 + m[2][1] * rm22 - m[3][1];
@@ -397,13 +396,13 @@ public final class Mat4d {
     public Mat4d frustumNonPost(double left, double right, double bottom, double top, double zNear, double zFar) {
         Mat4d res = new Mat4d();
 
-        res.m[0][0] = 2.0f * zNear / (right - left);
-        res.m[1][1] = 2.0f * zNear / (top - bottom);
+        res.m[0][0] = 2.0d * zNear / (right - left);
+        res.m[1][1] = 2.0d * zNear / (top - bottom);
         res.m[2][0] = (right + left) / (right - left);
         res.m[2][1] = (top + bottom) / (top - bottom);
         res.m[2][2] = -(zFar + zNear) / (zFar - zNear);
         res.m[2][3] = -1.0d;
-        res.m[3][2] = -2.0f * zFar * zNear / (zFar - zNear);
+        res.m[3][2] = -2.0d * zFar * zNear / (zFar - zNear);
 
         return res;
     }

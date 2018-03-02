@@ -702,9 +702,9 @@ public final class Vec3d {
 	public Vec3d reflect(Vec3d normal) {
 		double dot = dot(normal);
 
-		double x_ = this.x - 2.0f * dot * normal.x;
-		double y_ = this.y - 2.0f * dot * normal.y;
-		double z_ = this.z - 2.0f * dot * normal.z;
+		double x_ = this.x - 2.0d * dot * normal.x;
+		double y_ = this.y - 2.0d * dot * normal.y;
+		double z_ = this.z - 2.0d * dot * normal.z;
 
 		return new Vec3d(x_, y_, z_);
 	}

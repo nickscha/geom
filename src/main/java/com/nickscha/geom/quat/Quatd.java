@@ -84,19 +84,19 @@ public final class Quatd {
             z_ = (rot.get(0, 1) - rot.get(1, 0)) * s;
         } else {
             if (rot.get(0, 0) > rot.get(1, 1) && rot.get(0, 0) > rot.get(2, 2)) {
-                double s = 2.0f * (double) Math.sqrt(1.0d + rot.get(0, 0) - rot.get(1, 1) - rot.get(2, 2));
+                double s = 2.0d * (double) Math.sqrt(1.0d + rot.get(0, 0) - rot.get(1, 1) - rot.get(2, 2));
                 w_ = (rot.get(1, 2) - rot.get(2, 1)) / s;
                 x_ = 0.25f * s;
                 y_ = (rot.get(1, 0) + rot.get(0, 1)) / s;
                 z_ = (rot.get(2, 0) + rot.get(0, 2)) / s;
             } else if (rot.get(1, 1) > rot.get(2, 2)) {
-                double s = 2.0f * (double) Math.sqrt(1.0d + rot.get(1, 1) - rot.get(0, 0) - rot.get(2, 2));
+                double s = 2.0d * (double) Math.sqrt(1.0d + rot.get(1, 1) - rot.get(0, 0) - rot.get(2, 2));
                 w_ = (rot.get(2, 0) - rot.get(0, 2)) / s;
                 x_ = (rot.get(1, 0) + rot.get(0, 1)) / s;
                 y_ = 0.25f * s;
                 z_ = (rot.get(2, 1) + rot.get(1, 2)) / s;
             } else {
-                double s = 2.0f * (double) Math.sqrt(1.0d + rot.get(2, 2) - rot.get(0, 0) - rot.get(1, 1));
+                double s = 2.0d * (double) Math.sqrt(1.0d + rot.get(2, 2) - rot.get(0, 0) - rot.get(1, 1));
                 w_ = (rot.get(0, 1) - rot.get(1, 0)) / s;
                 x_ = (rot.get(2, 0) + rot.get(0, 2)) / s;
                 y_ = (rot.get(1, 2) + rot.get(2, 1)) / s;
@@ -267,9 +267,9 @@ public final class Quatd {
      * @return the rotation matrix from this quaternion.
      */
     public Mat4d rotationMatrix() {
-        Vec3d forward = new Vec3d(2.0f * (x * z - w * y), 2.0f * (y * z + w * x), 1.0d - 2.0f * (x * x + y * y));
-        Vec3d up = new Vec3d(2.0f * (x * y + w * z), 1.0d - 2.0f * (x * x + z * z), 2.0f * (y * z - w * x));
-        Vec3d right = new Vec3d(1.0d - 2.0f * (y * y + z * z), 2.0f * (x * y - w * z), 2.0f * (x * z + w * y));
+        Vec3d forward = new Vec3d(2.0d * (x * z - w * y), 2.0d * (y * z + w * x), 1.0d - 2.0d * (x * x + y * y));
+        Vec3d up = new Vec3d(2.0d * (x * y + w * z), 1.0d - 2.0d * (x * x + z * z), 2.0d * (y * z - w * x));
+        Vec3d right = new Vec3d(1.0d - 2.0d * (y * y + z * z), 2.0d * (x * y - w * z), 2.0d * (x * z + w * y));
 
         return Mat4d.rotationMatrix(forward, up, right);
     }

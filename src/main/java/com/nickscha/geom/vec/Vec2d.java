@@ -623,8 +623,8 @@ public final class Vec2d {
 	public Vec2d reflect(Vec2d normal) {
 		double dot = dot(normal);
 
-		double x_ = this.x - 2.0f * dot * normal.x;
-		double y_ = this.y - 2.0f * dot * normal.y;
+		double x_ = this.x - 2.0d * dot * normal.x;
+		double y_ = this.y - 2.0d * dot * normal.y;
 
 		return new Vec2d(x_, y_);
 	}

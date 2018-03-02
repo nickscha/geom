@@ -706,10 +706,10 @@ public final class Vec4d {
 	public Vec4d reflect(Vec4d normal) {
 		double dot = dot(normal);
 
-		double x_ = this.x - 2.0f * dot * normal.x;
-		double y_ = this.y - 2.0f * dot * normal.y;
-		double z_ = this.z - 2.0f * dot * normal.z;
-		double w_ = this.w - 2.0f * dot * normal.w;
+		double x_ = this.x - 2.0d * dot * normal.x;
+		double y_ = this.y - 2.0d * dot * normal.y;
+		double z_ = this.z - 2.0d * dot * normal.z;
+		double w_ = this.w - 2.0d * dot * normal.w;
 
 		return new Vec4d(x_, y_, z_, w_);
 	}
