@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.nickscha</groupId>
 	<artifactId>geom</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<packaging>jar</packaging>
 	<name>geom</name>
 	<description>A lightweight but powerful geometry libary with productive readiness API and fluent usages.</description>
