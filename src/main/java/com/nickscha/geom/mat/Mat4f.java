@@ -567,10 +567,11 @@ public final class Mat4f {
     public byte[] toBytes(byte[] data, int offset) {
         for (int i = 0; i < GROUPS; i++) {
             for (int j = 0; j < FIELDS; j++) {
-                data[offset++] = (byte) (Float.floatToIntBits(m[i][j]) >> 24);
-                data[offset++] = (byte) (Float.floatToIntBits(m[i][j]) >> 16);
-                data[offset++] = (byte) (Float.floatToIntBits(m[i][j]) >> 8);
-                data[offset++] = (byte) (Float.floatToIntBits(m[i][j]));
+                int tmp = Float.floatToIntBits(m[i][j]);
+                data[offset++] = (byte) (tmp >> 24);
+                data[offset++] = (byte) (tmp >> 16);
+                data[offset++] = (byte) (tmp >> 8);
+                data[offset++] = (byte) (tmp);
             }
         }
         return data;
