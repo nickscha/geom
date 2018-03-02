@@ -27,12 +27,12 @@ Class names are aligned with GLSL names.
 | Type          | Components                 | Progress  |
 | ------------- | -------------------------: | --------- |
 | Vectors       | Vec1f, Vec2f, Vec3f, Vec4f | 80%       |
-|               | Vec1d, Vec2d, Vec3d, Vec4d |  0%       |
+|               | Vec1d, Vec2d, Vec3d, Vec4d | 80%       |
 | Matrices      |               Mat3f, Mat4f | 60%       |
-|               |               Mat3d, Mat4d |  0%       |
+|               |               Mat3d, Mat4d | 60%       |
 | Quaternions   |                      Quatf | 40%       |
-|               |                      Quatd |  0%       |
-| Transform     |             Transf, Transd | 10%       |
+|               |                      Quatd | 40%       |
+| Transform     |             Transf, Transd | 20%       |
 
 ## Roadmap version 0.0.2
 
